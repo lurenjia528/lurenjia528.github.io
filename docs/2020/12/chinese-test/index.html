@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.80.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="lurenjia528">
+<meta name="keywords" content="">
+<meta name="description" content="nodeport访问失败">
+
+
+<meta property="og:description" content="nodeport访问失败">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeport访问失败">
+<meta name="twitter:title" content="nodeport访问失败">
+<meta property="og:url" content="https://lurenjia528.github.io/2020/12/chinese-test/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2020/12/chinese-test/">
+<meta property="og:site_name" content="lurenjia528">
+<meta property="og:description" content="nodeport访问失败">
+<meta name="twitter:description" content="nodeport访问失败">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-12-17T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-12-17T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="k8s">
+    
+      <meta property="article:section" content="iptables">
+    
+      <meta property="article:section" content="svc">
+    
+  
+  
+    
+      <meta property="article:tag" content="k8s">
+    
+      <meta property="article:tag" content="svc">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/ll.jpeg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
+
+
+    <title>nodeport访问失败</title>
+
+    <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://lurenjia528.github.io/2020/12/chinese-test/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://lurenjia528.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://lurenjia528.github.io/">lurenjia528</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://lurenjia528.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://lurenjia528.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">lurenjia528</h4>
+        
+          <h5 class="sidebar-profile-bio">后端开发</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/lurenjia528" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      nodeport访问失败
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-12-17T00:00:00Z">
+        
+  十二月 17, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/k8s">k8s</a>, 
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/iptables">iptables</a>, 
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/svc">svc</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>nodeport访问失败</p>
+<h1 id="通常由于iptables问题和selinux问题">通常由于iptables问题和selinux问题</h1>
+<p>解决方式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">setenforce <span style="color:#ae81ff">0</span>
+iptables --flush
+iptables -tnat --flush
+service docker restart
+iptables -P FORWARD ACCEPT
+</code></pre></div><p>官方原文：
+Disabling SELinux by running setenforce 0 is required to allow containers to access the host filesystem, which is required by pod networks for example. You have to do this until SELinux support is improved in the kubelet.
+翻译就是
+通过setenforce 0 关闭SELinux是必须的，这样容器才可以访问主机的文件系统，例如pod的网络操作就需要访问主机文件系统。直到kubelet支持SELinux之前你都需要关闭SELinux。</p>
+<p>iptables &ndash;flush和iptables -tnat &ndash;flush是清空iptables的规则，然后重启docker后会重新加入kubernetes的iptables规则，iptables -P FORWARD ACCEPT则允许转发</p>
+<h1 id="设置service的nodeport以后外部无法访问对应的端口的问题">设置service的nodeport以后外部无法访问对应的端口的问题</h1>
+<p>关于Service 设置为NodePort 模式后导致外部无法访问对应的端口问题，查看下node节点上已经出现了30002端口的监听，确保服务器外部安全组等限制已经放行该端口，按照网上搜到的教程配置基本没看到要配置iptables相关的问题。
+然后查阅了不少资料才看到docker 1.13 版本对iptables的规则进行了改动，默认FORWARD 链的规则为DROP ，带来的问题主要一旦DROP后，不同主机间就不能正常通信了（kubernetes的网络使用flannel的情况）。
+查看下node节点上的iptables规则：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@k8s-master ~<span style="color:#f92672">]</span><span style="color:#75715e"># iptables -L -n</span>
+Chain INPUT <span style="color:#f92672">(</span>policy ACCEPT<span style="color:#f92672">)</span>
+target     prot opt source               destination         
+KUBE-FIREWALL  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain FORWARD <span style="color:#f92672">(</span>policy DROP<span style="color:#f92672">)</span>
+target     prot opt source               destination         
+DOCKER-ISOLATION  all  --  0.0.0.0/0            0.0.0.0/0           
+DOCKER     all  --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0  
+</code></pre></div><p>　iptables 被kubernetes接管后的规则比较多，仔细看下FORWARD 规则就发现了，policy DROP状态，这就导致了我们直接访问node节点的IP加上端口会无法访问容器，问题出在iptables上就好解决了。
+临时解决方案，直接设置FORWARD 全局为ACCEPT：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@k8s-master ~<span style="color:#f92672">]</span><span style="color:#75715e"># iptables -P FORWARD ACCEPT</span>
+
+<span style="color:#f92672">[</span>root@k8s-master ~<span style="color:#f92672">]</span><span style="color:#75715e"># iptables -L -n</span>
+Chain INPUT <span style="color:#f92672">(</span>policy ACCEPT<span style="color:#f92672">)</span>
+target     prot opt source               destination         
+KUBE-FIREWALL  all  --  0.0.0.0/0            0.0.0.0/0           
+</code></pre></div><p>Chain FORWARD (policy ACCEPT)
+这样需要在每台node上执行命令，并且重启node后规则失效；
+永久解决方案，修改Docker启动参数，在[Service] 区域末尾加上参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@k8s-master ~<span style="color:#f92672">]</span><span style="color:#75715e"># vim /usr/lib/systemd/system/docker.service</span>
+<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+............
+ExecStartPost<span style="color:#f92672">=</span>/sbin/iptables -I FORWARD -s 0.0.0.0/0 -j ACCEPT
+<span style="color:#f92672">[</span>root@k8s-master ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl daemon-reload</span>
+<span style="color:#f92672">[</span>root@k8s-master ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl restart docker</span>
+</code></pre></div><p>由于修改了systemctl 文件，所以需要重新载入，重启docker 就可以看到iptables规则已经加上ACCEPT all &ndash; 0.0.0.0/0 0.0.0.0/0</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@k8s-master ~<span style="color:#f92672">]</span><span style="color:#75715e">#  iptables -L -n</span>
+Chain INPUT <span style="color:#f92672">(</span>policy DROP<span style="color:#f92672">)</span>
+target     prot opt source               destination         
+KUBE-FIREWALL  all  --  0.0.0.0/0            0.0.0.0/0           
+
+Chain FORWARD <span style="color:#f92672">(</span>policy ACCEPT<span style="color:#f92672">)</span>
+target     prot opt source               destination         
+ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0 
+</code></pre></div>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/k8s/">k8s</a>
+
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/svc/">svc</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/01/chinese-test/" data-tooltip="vim回车换行">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/11/chinese-test/" data-tooltip="k8s中部署mysql集群">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 lurenjia528. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/01/chinese-test/" data-tooltip="vim回车换行">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/11/chinese-test/" data-tooltip="k8s中部署mysql集群">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">lurenjia528</h4>
+    
+      <div id="about-card-bio">后端开发</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Cloud
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Beijing
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://lurenjia528.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://lurenjia528.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/12\/chinese-test\/';
+          
+            this.page.identifier = '\/2020\/12\/chinese-test\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'valine';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

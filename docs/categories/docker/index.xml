@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on lurenjia528</title>
+    <link>https://lurenjia528.github.io/categories/docker/</link>
+    <description>Recent content in docker on lurenjia528</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>构建多架构镜像</title>
+      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <description>&lt;p&gt;构建多架构镜像&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker挂载文件与目录</title>
+      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <description>&lt;p&gt;docker挂载文件与目录的不同之处&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>wsl安装docker</title>
+      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>清理docker镜像/容器</title>
+      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <description>&lt;p&gt;清理docker镜像/容器&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

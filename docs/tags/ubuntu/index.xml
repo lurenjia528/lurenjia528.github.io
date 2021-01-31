@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ubuntu on lurenjia528</title>
+    <link>https://lurenjia528.github.io/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on lurenjia528</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ubuntu登录页面</title>
+      <link>https://lurenjia528.github.io/2020/07/chinese-test/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/07/chinese-test/</guid>
+      <description>&lt;p&gt;登录页面去掉多余的用户,更换登录界面背景图,ulimit 修改&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

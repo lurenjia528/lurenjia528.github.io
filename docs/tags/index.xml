@@ -6,13 +6,274 @@
     <description>Recent content in Tags on lurenjia528</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>chinese</title>
-      <link>https://lurenjia528.github.io/tags/chinese/</link>
-      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      <title>vim</title>
+      <link>https://lurenjia528.github.io/tags/vim/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/tags/chinese/</guid>
+      <guid>https://lurenjia528.github.io/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://lurenjia528.github.io/tags/k8s/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>svc</title>
+      <link>https://lurenjia528.github.io/tags/svc/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/svc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://lurenjia528.github.io/tags/mysql/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>amd64</title>
+      <link>https://lurenjia528.github.io/tags/amd64/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/amd64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm64</title>
+      <link>https://lurenjia528.github.io/tags/arm64/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/arm64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://lurenjia528.github.io/tags/docker/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://lurenjia528.github.io/tags/go/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus-operator</title>
+      <link>https://lurenjia528.github.io/tags/prometheus-operator/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/prometheus-operator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wsl</title>
+      <link>https://lurenjia528.github.io/tags/wsl/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/wsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>https://lurenjia528.github.io/tags/redis/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://lurenjia528.github.io/tags/ubuntu/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>harbor</title>
+      <link>https://lurenjia528.github.io/tags/harbor/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/harbor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pod</title>
+      <link>https://lurenjia528.github.io/tags/pod/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/pod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>priorityClass</title>
+      <link>https://lurenjia528.github.io/tags/priorityclass/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/priorityclass/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>es</title>
+      <link>https://lurenjia528.github.io/tags/es/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/es/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service</title>
+      <link>https://lurenjia528.github.io/tags/service/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://lurenjia528.github.io/tags/git/</link>
+      <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>browser</title>
+      <link>https://lurenjia528.github.io/tags/browser/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/browser/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hpa</title>
+      <link>https://lurenjia528.github.io/tags/hpa/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/hpa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://lurenjia528.github.io/tags/prometheus/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cobra</title>
+      <link>https://lurenjia528.github.io/tags/cobra/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/cobra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>glog</title>
+      <link>https://lurenjia528.github.io/tags/glog/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/glog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ipvs</title>
+      <link>https://lurenjia528.github.io/tags/ipvs/</link>
+      <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/ipvs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>envoy</title>
+      <link>https://lurenjia528.github.io/tags/envoy/</link>
+      <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/envoy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>beego</title>
+      <link>https://lurenjia528.github.io/tags/beego/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/beego/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgresql</title>
+      <link>https://lurenjia528.github.io/tags/postgresql/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kube-proxy</title>
+      <link>https://lurenjia528.github.io/tags/kube-proxy/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/kube-proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>modules</title>
+      <link>https://lurenjia528.github.io/tags/modules/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/modules/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://lurenjia528.github.io/tags/shell/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/tags/shell/</guid>
       <description></description>
     </item>
     
@@ -62,24 +323,6 @@
     </item>
     
     <item>
-      <title>html elements</title>
-      <link>https://lurenjia528.github.io/tags/html-elements/</link>
-      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/html-elements/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>markdown</title>
-      <link>https://lurenjia528.github.io/tags/markdown/</link>
-      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>cover image</title>
       <link>https://lurenjia528.github.io/tags/cover-image/</link>
       <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
@@ -125,83 +368,11 @@
     </item>
     
     <item>
-      <title>social</title>
-      <link>https://lurenjia528.github.io/tags/social/</link>
-      <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/social/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tags</title>
-      <link>https://lurenjia528.github.io/tags/tags/</link>
-      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/tags/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pagination</title>
-      <link>https://lurenjia528.github.io/tags/pagination/</link>
-      <pubDate>Fri, 15 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/pagination/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dailymotion</title>
-      <link>https://lurenjia528.github.io/tags/dailymotion/</link>
-      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/dailymotion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>videos integration</title>
-      <link>https://lurenjia528.github.io/tags/videos-integration/</link>
-      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/videos-integration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vimeo</title>
-      <link>https://lurenjia528.github.io/tags/vimeo/</link>
-      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/vimeo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>youtube</title>
-      <link>https://lurenjia528.github.io/tags/youtube/</link>
-      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/youtube/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>image gallery</title>
       <link>https://lurenjia528.github.io/tags/image-gallery/</link>
       <pubDate>Mon, 18 Feb 2013 00:00:00 +0000</pubDate>
       
       <guid>https://lurenjia528.github.io/tags/image-gallery/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>japanese</title>
-      <link>https://lurenjia528.github.io/tags/japanese/</link>
-      <pubDate>Wed, 02 Jan 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/tags/japanese/</guid>
       <description></description>
     </item>
     

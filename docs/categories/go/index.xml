@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on lurenjia528</title>
+    <link>https://lurenjia528.github.io/categories/go/</link>
+    <description>Recent content in go on lurenjia528</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>prometheus-operator源码分析</title>
+      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <description>&lt;p&gt;prometheus-operator源码分析&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>cobra与glog冲突</title>
+      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <description>&lt;p&gt;cobra与glog冲突&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>postgresql</title>
+      <link>https://lurenjia528.github.io/2019/09/chinese-test/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2019/09/chinese-test/</guid>
+      <description>&lt;p&gt;beego 操作postgresql&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

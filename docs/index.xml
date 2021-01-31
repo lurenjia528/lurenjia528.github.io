@@ -6,14 +6,212 @@
     <description>Recent content on lurenjia528</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ygt</title>
+      <title>vim回车换行</title>
       <link>https://lurenjia528.github.io/2021/01/chinese-test/</link>
-      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lurenjia528.github.io/2021/01/chinese-test/</guid>
-      <description>&lt;p&gt;This is a chinese test post to show you how chinese is displayed.&lt;/p&gt;</description>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nodeport访问失败</title>
+      <link>https://lurenjia528.github.io/2020/12/chinese-test/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/12/chinese-test/</guid>
+      <description>&lt;p&gt;nodeport访问失败&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>k8s中部署mysql集群</title>
+      <link>https://lurenjia528.github.io/2020/11/chinese-test/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/11/chinese-test/</guid>
+      <description>&lt;p&gt;k8s中部署mysql集群&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql常见问题</title>
+      <link>https://lurenjia528.github.io/2020/11/chinese-test/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/11/chinese-test/</guid>
+      <description>&lt;p&gt;k8s中部署mysql集群&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>prometheus-operator源码分析</title>
+      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <description>&lt;p&gt;prometheus-operator源码分析&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>构建多架构镜像</title>
+      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <description>&lt;p&gt;构建多架构镜像&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker挂载文件与目录</title>
+      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <description>&lt;p&gt;docker挂载文件与目录的不同之处&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>wsl安装docker</title>
+      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis启动错误</title>
+      <link>https://lurenjia528.github.io/2020/07/chinese-test/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/07/chinese-test/</guid>
+      <description>&lt;p&gt;redis启动错误&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ubuntu登录页面</title>
+      <link>https://lurenjia528.github.io/2020/07/chinese-test/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/07/chinese-test/</guid>
+      <description>&lt;p&gt;登录页面去掉多余的用户,更换登录界面背景图,ulimit 修改&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>harbor基于Bearer的验证</title>
+      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <description>&lt;p&gt;harbor基于Bearer的验证&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>pod-抢占</title>
+      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <description>&lt;p&gt;k8s中pod的资源抢占&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>es.service</title>
+      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <description>&lt;p&gt;es.service&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>git相关</title>
+      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <description>&lt;p&gt;git相关&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>浏览器端口</title>
+      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <description>&lt;p&gt;java等应用无法在6666端口启动，是因为&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>k8s自定义指标hpa</title>
+      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cobra与glog冲突</title>
+      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <description>&lt;p&gt;cobra与glog冲突&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ipvs</title>
+      <link>https://lurenjia528.github.io/2020/01/chinese-test/</link>
+      <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/01/chinese-test/</guid>
+      <description>&lt;p&gt;ipvs系统参数调整&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>envoy测试</title>
+      <link>https://lurenjia528.github.io/2019/12/chinese-test/</link>
+      <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2019/12/chinese-test/</guid>
+      <description>&lt;p&gt;redis启动错误&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>postgresql</title>
+      <link>https://lurenjia528.github.io/2019/09/chinese-test/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2019/09/chinese-test/</guid>
+      <description>&lt;p&gt;beego 操作postgresql&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kube-proxy启用ipvs</title>
+      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <description>&lt;p&gt;kube-proxy启用ipvs&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>清理docker镜像/容器</title>
+      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <description>&lt;p&gt;清理docker镜像/容器&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>系统模块</title>
+      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -23,24 +221,6 @@
       
       <guid>https://lurenjia528.github.io/2015/06/welcome-to-tranquilpeak-0.4.8-beta/</guid>
       <description>&lt;p&gt;Tranquilpeak is a gorgeous responsive theme for Hugo blog framework. It has many features and integrated services to improve user experience.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Who&#39;s using Tranquilpeak Hugo Theme</title>
-      <link>https://lurenjia528.github.io/2015/06/who-is-using-tranquilpeak-hugo-theme/</link>
-      <pubDate>Sun, 14 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2015/06/who-is-using-tranquilpeak-hugo-theme/</guid>
-      <description>&lt;p&gt;Here you can find a list of the blogs that use Tranquilpeak theme, with different styles and customizations.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Elements showcase</title>
-      <link>https://lurenjia528.github.io/2015/05/elements-showcase/</link>
-      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2015/05/elements-showcase/</guid>
-      <description>&lt;p&gt;Check out how Tranquilpeak theme display well HTML elements (title, paragraph, blockquote, table and more..). It&amp;rsquo;s simple and elegant.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -71,66 +251,12 @@
     </item>
     
     <item>
-      <title>Hidden social section showcase</title>
-      <link>https://lurenjia528.github.io/2014/08/hidden-social-section-showcase/</link>
-      <pubDate>Sun, 17 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2014/08/hidden-social-section-showcase/</guid>
-      <description>&lt;p&gt;This post is used to show how a site looks if the social section is hidden.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Hidden tag section showcase</title>
-      <link>https://lurenjia528.github.io/2014/08/hidden-tag-section-showcase/</link>
-      <pubDate>Sat, 16 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2014/08/hidden-tag-section-showcase/</guid>
-      <description>&lt;p&gt;This post is used to show how a site looks if the tag section is hidden.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Hidden pagination showcase</title>
-      <link>https://lurenjia528.github.io/2014/08/hidden-pagination-showcase/</link>
-      <pubDate>Fri, 15 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2014/08/hidden-pagination-showcase/</guid>
-      <description>&lt;p&gt;This post is used to show how a site looks if the pagination is hidden.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Video integrations showcase</title>
-      <link>https://lurenjia528.github.io/2014/08/video-integrations-showcase/</link>
-      <pubDate>Sat, 09 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2014/08/video-integrations-showcase/</guid>
-      <description>&lt;p&gt;Youtube and Vimeo videos are easily integrated thanks to tags plugins. Of course, you can add video other platforms like dailymotion.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>中文測試</title>
-      <link>https://lurenjia528.github.io/2013/10/chinese-test/</link>
-      <pubDate>Wed, 02 Oct 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2013/10/chinese-test/</guid>
-      <description>&lt;p&gt;This is a chinese test post to show you how chinese is displayed.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Image gallery showcase</title>
       <link>https://lurenjia528.github.io/2013/02/image-gallery-showcase/</link>
       <pubDate>Mon, 18 Feb 2013 00:00:00 +0000</pubDate>
       
       <guid>https://lurenjia528.github.io/2013/02/image-gallery-showcase/</guid>
       <description>&lt;p&gt;And here is the image gallery!&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>日本語テスト</title>
-      <link>https://lurenjia528.github.io/2013/01/japanese-test/</link>
-      <pubDate>Wed, 02 Jan 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2013/01/japanese-test/</guid>
-      <description>&lt;p&gt;This is a Japanese test post to show you how japanese is displayed.&lt;/p&gt;</description>
     </item>
     
   </channel>

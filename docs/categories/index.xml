@@ -6,22 +6,247 @@
     <description>Recent content in Categories on lurenjia528</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>features</title>
-      <link>https://lurenjia528.github.io/categories/features/</link>
-      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      <title>linux</title>
+      <link>https://lurenjia528.github.io/categories/linux/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/categories/features/</guid>
+      <guid>https://lurenjia528.github.io/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>tranquilpeak</title>
-      <link>https://lurenjia528.github.io/categories/tranquilpeak/</link>
-      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      <title>vim</title>
+      <link>https://lurenjia528.github.io/categories/vim/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/categories/tranquilpeak/</guid>
+      <guid>https://lurenjia528.github.io/categories/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://lurenjia528.github.io/categories/windows/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iptables</title>
+      <link>https://lurenjia528.github.io/categories/iptables/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/iptables/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://lurenjia528.github.io/categories/k8s/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>svc</title>
+      <link>https://lurenjia528.github.io/categories/svc/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/svc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://lurenjia528.github.io/categories/mysql/</link>
+      <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://lurenjia528.github.io/categories/docker/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://lurenjia528.github.io/categories/go/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus-operator</title>
+      <link>https://lurenjia528.github.io/categories/prometheus-operator/</link>
+      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/prometheus-operator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://lurenjia528.github.io/categories/ubuntu/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wsl</title>
+      <link>https://lurenjia528.github.io/categories/wsl/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/wsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>https://lurenjia528.github.io/categories/redis/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>harbor</title>
+      <link>https://lurenjia528.github.io/categories/harbor/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/harbor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pod</title>
+      <link>https://lurenjia528.github.io/categories/pod/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/pod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>systemd</title>
+      <link>https://lurenjia528.github.io/categories/systemd/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/systemd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://lurenjia528.github.io/categories/git/</link>
+      <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>browser</title>
+      <link>https://lurenjia528.github.io/categories/browser/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/browser/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>port</title>
+      <link>https://lurenjia528.github.io/categories/port/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/port/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hpa</title>
+      <link>https://lurenjia528.github.io/categories/hpa/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/hpa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://lurenjia528.github.io/categories/prometheus/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ipvs</title>
+      <link>https://lurenjia528.github.io/categories/ipvs/</link>
+      <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/ipvs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>envoy</title>
+      <link>https://lurenjia528.github.io/categories/envoy/</link>
+      <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/envoy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>beego</title>
+      <link>https://lurenjia528.github.io/categories/beego/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/beego/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgresql</title>
+      <link>https://lurenjia528.github.io/categories/postgresql/</link>
+      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kube-proxy</title>
+      <link>https://lurenjia528.github.io/categories/kube-proxy/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/kube-proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://lurenjia528.github.io/categories/shell/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/shell/</guid>
       <description></description>
     </item>
     
@@ -35,11 +260,20 @@
     </item>
     
     <item>
-      <title>showcase</title>
-      <link>https://lurenjia528.github.io/categories/showcase/</link>
-      <pubDate>Sun, 14 Jun 2015 00:00:00 +0000</pubDate>
+      <title>tranquilpeak</title>
+      <link>https://lurenjia528.github.io/categories/tranquilpeak/</link>
+      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/categories/showcase/</guid>
+      <guid>https://lurenjia528.github.io/categories/tranquilpeak/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>features</title>
+      <link>https://lurenjia528.github.io/categories/features/</link>
+      <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/features/</guid>
       <description></description>
     </item>
     
