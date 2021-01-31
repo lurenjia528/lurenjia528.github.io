@@ -20,6 +20,7 @@ theme = "hugo-tranquilpeak-theme"
 disqusShortname = "valine"
 # googleAnalytics = "UA-123-45"
 paginate = 7
+publishDir = "docs"
 canonifyurls = true
 
 [permalinks]
