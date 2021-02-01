@@ -21,9 +21,21 @@
   <component name="ChangeListManager">
     <list default="true" id="4dd7c8f9-0d9c-42ba-8b80-822490ca7b2c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.toml" beforeDir="false" afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/Tags-plugins-showcase.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/highlighted-code-showcase.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/Harbor基于Bearer的验证.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/Harbor基于Bearer的验证.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/clean-docker.sh.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/clean-docker.sh.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/docker挂载文件，修改后不同步.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/docker挂载文件，修改后不同步.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/envoy测试.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/envoy测试.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/es.service.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/es.service.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/git.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/git.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/mysql常见问题.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/mysql常见问题.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/mysql集群.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/mysql集群.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/postgresql.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/postgresql.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/prometheus-operator源码分析.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/prometheus-operator源码分析.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/redis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/ubuntu.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/ubuntu.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/vim.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/vim.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/wsl.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/wsl.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/构建多架构镜像.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/构建多架构镜像.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,14 +61,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/img" />
       <recent name="E:\softwarelocation\go\gopath\src\github.com\lurenjia528\lurenjia528.github.io\static\img\docker-multiarch" />
       <recent name="E:\softwarelocation\go\gopath\src\github.com\lurenjia528\lurenjia528.github.io\content\post" />
       <recent name="E:\softwarelocation\go\gopath\src\github.com\lurenjia528\lurenjia528.github.io\static" />

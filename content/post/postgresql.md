@@ -11,7 +11,7 @@ tags:
 - postgresql
 - go
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/postgresql.jpeg
 ---
 beego 操作postgresql
 <!--more-->

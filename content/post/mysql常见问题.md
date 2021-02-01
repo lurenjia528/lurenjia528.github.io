@@ -7,9 +7,10 @@ categories:
 tags:
 - mysql
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/mysql-front.jpeg
+coverImage: /img/mysql2.jpeg
 ---
-k8s中部署mysql集群
+mysql常见问题
 <!--more-->
 
 

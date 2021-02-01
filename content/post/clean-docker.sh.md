@@ -10,7 +10,7 @@ tags:
 - docker
 - shell
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/docker.jpg
 ---
 清理docker镜像/容器
 <!--more-->

@@ -10,7 +10,8 @@ tags:
 - wsl
 - docker
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/wsl.jpg
+coverImage: /img/wsl.jpg
 ---
 
 <!--more-->

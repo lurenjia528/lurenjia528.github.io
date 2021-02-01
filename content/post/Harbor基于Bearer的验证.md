@@ -8,7 +8,8 @@ categories:
 tags:
 - harbor
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/harbor-1.png
+coverImage: /img/harbor-2.jpg
 ---
 harbor基于Bearer的验证
 <!--more-->

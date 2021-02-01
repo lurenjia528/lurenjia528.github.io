@@ -8,7 +8,7 @@ categories:
 tags:
 - redis
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/redis.jpg
 ---
 redis启动错误
 <!--more-->

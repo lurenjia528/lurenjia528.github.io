@@ -9,7 +9,7 @@ tags:
 - es
 - service
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/es.jpeg
 ---
 es.service
 <!--more-->

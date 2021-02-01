@@ -8,7 +8,8 @@ categories:
 tags:
 - docker
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/docker.jpg
+coverImage: /img/docker-long.jpg
 ---
 docker挂载文件与目录的不同之处
 <!--more-->

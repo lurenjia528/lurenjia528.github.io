@@ -8,7 +8,7 @@ categories:
 tags:
 - ubuntu
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/ubuntu.jpeg
 ---
 登录页面去掉多余的用户,更换登录界面背景图,ulimit 修改
 <!--more-->

@@ -9,7 +9,8 @@ tags:
 - go
 - prometheus-operator
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/prometheus.jpeg
+coverImage: /img/prometheus.jpeg
 ---
 prometheus-operator源码分析
 <!--more-->

@@ -8,7 +8,8 @@ categories:
 tags:
 - git
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/git1.jpg
+coverImage: /img/git.jpeg
 ---
 git相关
 <!--more-->

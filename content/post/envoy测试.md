@@ -8,7 +8,7 @@ categories:
 tags:
 - envoy
 thumbnailImagePosition: left
-thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg
+thumbnailImage: /img/envoy.png
 ---
 redis启动错误
 <!--more-->
