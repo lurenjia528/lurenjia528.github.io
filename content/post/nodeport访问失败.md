@@ -1,6 +1,6 @@
 ---
 title: nodeport访问失败
-slug: chinese-test
+#slug: chinese-test
 date: 2020-12-17
 categories:
 - k8s

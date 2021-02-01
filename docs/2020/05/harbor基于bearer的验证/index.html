@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.80.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="lurenjia528">
+<meta name="keywords" content="">
+<meta name="description" content="harbor基于Bearer的验证">
+
+
+<meta property="og:description" content="harbor基于Bearer的验证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="harbor基于Bearer的验证">
+<meta name="twitter:title" content="harbor基于Bearer的验证">
+<meta property="og:url" content="https://lurenjia528.github.io/2020/05/harbor%E5%9F%BA%E4%BA%8Ebearer%E7%9A%84%E9%AA%8C%E8%AF%81/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2020/05/harbor%E5%9F%BA%E4%BA%8Ebearer%E7%9A%84%E9%AA%8C%E8%AF%81/">
+<meta property="og:site_name" content="lurenjia528">
+<meta property="og:description" content="harbor基于Bearer的验证">
+<meta name="twitter:description" content="harbor基于Bearer的验证">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-05-28T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-05-28T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="harbor">
+    
+      <meta property="article:section" content="ubuntu">
+    
+  
+  
+    
+      <meta property="article:tag" content="harbor">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/img/harbor-1.png">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/harbor-1.png">
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/img/harbor-2.jpg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/harbor-2.jpg">
+
+
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/ll.jpeg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
+
+
+    <title>harbor基于Bearer的验证</title>
+
+    <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://lurenjia528.github.io/2020/05/harbor%E5%9F%BA%E4%BA%8Ebearer%E7%9A%84%E9%AA%8C%E8%AF%81/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://lurenjia528.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://lurenjia528.github.io/">lurenjia528</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://lurenjia528.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://lurenjia528.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">lurenjia528</h4>
+        
+          <h5 class="sidebar-profile-bio">后端开发</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/lurenjia528" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://hub.docker.com/u/lurenjia" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-docker"></i>
+      
+      <span class="sidebar-button-desc">Docker</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              "
+       style="background-image:url('/img/harbor-2.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      harbor基于Bearer的验证
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-28T00:00:00Z">
+        
+  五月 28, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/harbor">harbor</a>, 
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/ubuntu">ubuntu</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>harbor基于Bearer的验证</p>
+<h1 id="获取token服务地址">获取token服务地址</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ht061@HT061:~/gocode/src/github.com/goharbor/harbor$ curl -v -k  https://ygt.harbor.csse:443/v2/
+*   Trying 192.168.17.187...
+* TCP_NODELAY set
+* Connected to ygt.harbor.csse <span style="color:#f92672">(</span>192.168.17.187<span style="color:#f92672">)</span> port <span style="color:#ae81ff">443</span> <span style="color:#f92672">(</span><span style="color:#75715e">#0)</span>
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*   CAfile: /etc/ssl/certs/ca-certificates.crt
+  CApath: /etc/ssl/certs
+* <span style="color:#f92672">(</span>304<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>OUT<span style="color:#f92672">)</span>, TLS handshake, Client hello <span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>:
+* <span style="color:#f92672">(</span>304<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>IN<span style="color:#f92672">)</span>, TLS handshake, Server hello <span style="color:#f92672">(</span>2<span style="color:#f92672">)</span>:
+* TLSv1.2 <span style="color:#f92672">(</span>IN<span style="color:#f92672">)</span>, TLS handshake, Certificate <span style="color:#f92672">(</span>11<span style="color:#f92672">)</span>:
+* TLSv1.2 <span style="color:#f92672">(</span>IN<span style="color:#f92672">)</span>, TLS handshake, Server key exchange <span style="color:#f92672">(</span>12<span style="color:#f92672">)</span>:
+* TLSv1.2 <span style="color:#f92672">(</span>IN<span style="color:#f92672">)</span>, TLS handshake, Server finished <span style="color:#f92672">(</span>14<span style="color:#f92672">)</span>:
+* TLSv1.2 <span style="color:#f92672">(</span>OUT<span style="color:#f92672">)</span>, TLS handshake, Client key exchange <span style="color:#f92672">(</span>16<span style="color:#f92672">)</span>:
+* TLSv1.2 <span style="color:#f92672">(</span>OUT<span style="color:#f92672">)</span>, TLS change cipher, Client hello <span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>:
+* TLSv1.2 <span style="color:#f92672">(</span>OUT<span style="color:#f92672">)</span>, TLS handshake, Finished <span style="color:#f92672">(</span>20<span style="color:#f92672">)</span>:
+* TLSv1.2 <span style="color:#f92672">(</span>IN<span style="color:#f92672">)</span>, TLS handshake, Finished <span style="color:#f92672">(</span>20<span style="color:#f92672">)</span>:
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+*  subject: C<span style="color:#f92672">=</span>CN; ST<span style="color:#f92672">=</span>Beijing; L<span style="color:#f92672">=</span>Beijing; O<span style="color:#f92672">=</span>example; OU<span style="color:#f92672">=</span>Personal; CN<span style="color:#f92672">=</span>ygt.harbor.csse
+*  start date: May <span style="color:#ae81ff">21</span> 06:32:46 <span style="color:#ae81ff">2020</span> GMT
+*  expire date: May <span style="color:#ae81ff">19</span> 06:32:46 <span style="color:#ae81ff">2030</span> GMT
+*  issuer: C<span style="color:#f92672">=</span>CN; ST<span style="color:#f92672">=</span>Beijing; L<span style="color:#f92672">=</span>Beijing; O<span style="color:#f92672">=</span>example; OU<span style="color:#f92672">=</span>Personal; CN<span style="color:#f92672">=</span>ygt.harbor.csse
+*  SSL certificate verify result: unable to get local issuer certificate <span style="color:#f92672">(</span>20<span style="color:#f92672">)</span>, continuing anyway.
+&gt; GET /v2/ HTTP/1.1
+&gt; Host: ygt.harbor.csse
+&gt; User-Agent: curl/7.58.0
+&gt; Accept: */*
+&gt; 
+&lt; HTTP/1.1 <span style="color:#ae81ff">401</span> Unauthorized
+&lt; Server: nginx
+&lt; Date: Thu, <span style="color:#ae81ff">28</span> May <span style="color:#ae81ff">2020</span> 02:04:57 GMT
+&lt; Content-Type: application/json; charset<span style="color:#f92672">=</span>utf-8
+&lt; Content-Length: <span style="color:#ae81ff">76</span>
+&lt; Connection: keep-alive
+&lt; Docker-Distribution-Api-Version: registry/2.0
+&lt; Set-Cookie: sid<span style="color:#f92672">=</span>ca6f870d125f914ff6ff02d6336ea538; Path<span style="color:#f92672">=</span>/; HttpOnly
+&lt; Www-Authenticate: Bearer realm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://ygt.harbor.csse/service/token&#34;</span>,service<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;harbor-registry&#34;</span>
+&lt; X-Request-Id: 74ca1dab-f86c-4fa1-af48-914498f15ee3
+&lt; 
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;errors&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;UNAUTHORIZED&#34;</span>,<span style="color:#e6db74">&#34;message&#34;</span>:<span style="color:#e6db74">&#34;unauthorized: unauthorized&#34;</span><span style="color:#f92672">}]}</span>
+
+</code></pre></div><h1 id="获取token">获取token</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ht061@HT061:~/gocode/src/github.com/goharbor/harbor$ curl -ikL -u admin:Harbor12345 https://ygt.harbor.csse/service/token?account<span style="color:#f92672">=</span>admin<span style="color:#ae81ff">\&amp;</span>service<span style="color:#f92672">=</span>harbor-registry<span style="color:#ae81ff">\&amp;</span>scope<span style="color:#f92672">=</span>repository:timi/busybox:pull,push
+HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+Server: nginx
+Date: Thu, <span style="color:#ae81ff">28</span> May <span style="color:#ae81ff">2020</span> 02:10:11 GMT
+Content-Type: application/json; charset<span style="color:#f92672">=</span>utf-8
+Content-Length: <span style="color:#ae81ff">1216</span>
+Connection: keep-alive
+Set-Cookie: sid<span style="color:#f92672">=</span>85b566e4b93612208b0af1e879b648b3; Path<span style="color:#f92672">=</span>/; Secure; HttpOnly
+X-Request-Id: 9f22b1c7-4e94-44cc-8f33-b788ba5de1a3
+Strict-Transport-Security: max-age<span style="color:#f92672">=</span>31536000; includeSubdomains; preload
+X-Frame-Options: DENY
+Content-Security-Policy: frame-ancestors <span style="color:#e6db74">&#39;none&#39;</span>
+
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;token&#34;</span>: <span style="color:#e6db74">&#34;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlBEWUI6M0QzVzpDTU1MOlJWWkQ6NUg1VzpVT1ZDOjVHR1E6SDVQUDpHRlpGOjU2T086WkRTMjo2Uk5aIn0.eyJpc3MiOiJoYXJib3ItdG9rZW4taXNzdWVyIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJoYXJib3ItcmVnaXN0cnkiLCJleHAiOjE1OTA2MzM2MTEsIm5iZiI6MTU5MDYzMTgxMSwiaWF0IjoxNTkwNjMxODExLCJqdGkiOiJkS3o1N2JDdXVlRVRkMDBOIiwiYWNjZXNzIjpbeyJ0eXBlIjoicmVwb3NpdG9yeSIsIm5hbWUiOiJ0aW1pL2J1c3lib3giLCJhY3Rpb25zIjpbInB1c2giLCIqIiwicHVsbCJdfV19.ACPiiLq8ammca9xldAB4cWnS-EtSJoPt0N0SsOCM6Z8DYDfBJAvpwYNlXBFUPSaqBQZD044ocaOAoq-H4G3wOYMKZp5feXqurtJfwRzsEMWWbbo4hK7I4Xoom0jFKMtTzbrtdJNQCi9BwCOii7k62y3yqLqkGyibOz_tXw6-h2a6FODURCr4oVxecVPPtrzoowrNKgPfEHygC3Sowi4UzYUxPGj66uVWraB7t1oIIJmvj0FYicQ9nAqT0mRfEMGhtWhGacNetozieV6ZsxENmPxU4p3Al4Dv9wQ55NLGg5eXBcH0UoZiMEzheh4OsZq19decCUaxKkQwnW0VbtYV9FxjRP7OfeKwIS0nDJE3TKXEdLvK6Yf3OX40F6GXYB7PA5S01fr1yTfDkjdtpc-MdB5jqHhTBvXG3jQgLrZrGuSsFCR_KX8Z0aNJhtmamKlFWIUGDGnMw7GHVjBPgldkGKUHK94mebKCLZ2x4K6SgOjhij5KcR7oAo9kidzp_53nk4jFnYUQAxEWf-1Hue4pqGx_YgsdzMBgwWqLh-S8NFzTxxxT8xYRDSYMetr0GWZMjeQzIP8m4Eu9GFnTkF0iNufepf1qbrR2_2yXTZy224BT23MGlr-ZP99wdDm05b3Nf7uPSlc0ioEnc2mqjWrLJK5Pmj3qOIlhOmdq2oVTBdY&#34;</span>,
+  <span style="color:#e6db74">&#34;access_token&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+  <span style="color:#e6db74">&#34;expires_in&#34;</span>: 1800,
+  <span style="color:#e6db74">&#34;issued_at&#34;</span>: <span style="color:#e6db74">&#34;2020-05-28T02:10:11Z&#34;</span>
+
+</code></pre></div><h1 id="使用token">使用token</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> curl -k -H <span style="color:#e6db74">&#34;Accept:application/vnd.docker.distribution.manifest.v2+json&#34;</span> -H <span style="color:#e6db74">&#34;HOST:ygt.harbor.csse&#34;</span> -H <span style="color:#e6db74">&#34;Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlBEWUI6M0QzVzpDTU1MOlJWWkQ6NUg1VzpVT1ZDOjVHR1E6SDVQUDpHRlpGOjU2T086WkRTMjo2Uk5aIn0.eyJpc3MiOiJoYXJib3ItdG9rZW4taXNzdWVyIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJoYXJib3ItcmVnaXN0cnkiLCJleHAiOjE1OTA2MzM2MTEsIm5iZiI6MTU5MDYzMTgxMSwiaWF0IjoxNTkwNjMxODExLCJqdGkiOiJkS3o1N2JDdXVlRVRkMDBOIiwiYWNjZXNzIjpbeyJ0eXBlIjoicmVwb3NpdG9yeSIsIm5hbWUiOiJ0aW1pL2J1c3lib3giLCJhY3Rpb25zIjpbInB1c2giLCIqIiwicHVsbCJdfV19.ACPiiLq8ammca9xldAB4cWnS-EtSJoPt0N0SsOCM6Z8DYDfBJAvpwYNlXBFUPSaqBQZD044ocaOAoq-H4G3wOYMKZp5feXqurtJfwRzsEMWWbbo4hK7I4Xoom0jFKMtTzbrtdJNQCi9BwCOii7k62y3yqLqkGyibOz_tXw6-h2a6FODURCr4oVxecVPPtrzoowrNKgPfEHygC3Sowi4UzYUxPGj66uVWraB7t1oIIJmvj0FYicQ9nAqT0mRfEMGhtWhGacNetozieV6ZsxENmPxU4p3Al4Dv9wQ55NLGg5eXBcH0UoZiMEzheh4OsZq19decCUaxKkQwnW0VbtYV9FxjRP7OfeKwIS0nDJE3TKXEdLvK6Yf3OX40F6GXYB7PA5S01fr1yTfDkjdtpc-MdB5jqHhTBvXG3jQgLrZrGuSsFCR_KX8Z0aNJhtmamKlFWIUGDGnMw7GHVjBPgldkGKUHK94mebKCLZ2x4K6SgOjhij5KcR7oAo9kidzp_53nk4jFnYUQAxEWf-1Hue4pqGx_YgsdzMBgwWqLh-S8NFzTxxxT8xYRDSYMetr0GWZMjeQzIP8m4Eu9GFnTkF0iNufepf1qbrR2_2yXTZy224BT23MGlr-ZP99wdDm05b3Nf7uPSlc0ioEnc2mqjWrLJK5Pmj3qOIlhOmdq2oVTBdY&#34;</span> https://ygt.harbor.csse/v2/timi/busybox/manifests/0.0.1
+<span style="color:#f92672">{</span>
+   <span style="color:#e6db74">&#34;schemaVersion&#34;</span>: 2,
+   <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.list.v2+json&#34;</span>,
+   <span style="color:#e6db74">&#34;manifests&#34;</span>: <span style="color:#f92672">[</span>
+      <span style="color:#f92672">{</span>
+         <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.v2+json&#34;</span>,
+         <span style="color:#e6db74">&#34;size&#34;</span>: 527,
+         <span style="color:#e6db74">&#34;digest&#34;</span>: <span style="color:#e6db74">&#34;sha256:186694df7e479d2b8bf075d9e1b1d7a884c6de60470006d572350573bfa6dcd2&#34;</span>,
+         <span style="color:#e6db74">&#34;platform&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;architecture&#34;</span>: <span style="color:#e6db74">&#34;amd64&#34;</span>,
+            <span style="color:#e6db74">&#34;os&#34;</span>: <span style="color:#e6db74">&#34;linux&#34;</span>
+         <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>,
+      <span style="color:#f92672">{</span>
+         <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.v2+json&#34;</span>,
+         <span style="color:#e6db74">&#34;size&#34;</span>: 527,
+         <span style="color:#e6db74">&#34;digest&#34;</span>: <span style="color:#e6db74">&#34;sha256:2ca549a51078fb35f0c5d1dca103b7d58523f1998a7f78a489c16dd38a5c5cf9&#34;</span>,
+         <span style="color:#e6db74">&#34;platform&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;architecture&#34;</span>: <span style="color:#e6db74">&#34;arm64&#34;</span>,
+            <span style="color:#e6db74">&#34;os&#34;</span>: <span style="color:#e6db74">&#34;linux&#34;</span>
+         <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>
+   <span style="color:#f92672">]</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h1 id="获取-digestsha256">获取 digest(sha256)</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> curl  -k --head -H <span style="color:#e6db74">&#34;Accept:application/vnd.docker.distribution.manifest.v2+json&#34;</span> -H <span style="color:#e6db74">&#34;HOST:ygt.harbor.csse&#34;</span> -H <span style="color:#e6db74">&#34;Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlBEWUI6M0QzVzpDTU1MOlJWWkQ6NUg1VzpVT1ZDOjVHR1E6SDVQUDpHRlpGOjU2T086WkRTMjo2Uk5aIn0.eyJpc3MiOiJoYXJib3ItdG9rZW4taXNzdWVyIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJoYXJib3ItcmVnaXN0cnkiLCJleHAiOjE1OTA2MzU2ODIsIm5iZiI6MTU5MDYzMzg4MiwiaWF0IjoxNTkwNjMzODgyLCJqdGkiOiJTNlQxVFh5a3VYSTRiVnhIIiwiYWNjZXNzIjpbeyJ0eXBlIjoicmVwb3NpdG9yeSIsIm5hbWUiOiJ0aW1pL2J1c3lib3giLCJhY3Rpb25zIjpbInB1c2giLCIqIiwicHVsbCJdfV19.wBeHRSVAyIoxerrwOVwJ6G_tMiZWCvYk96OIqJIg9wIq8asMP1wDvtuBhGGghH8yDhfBy6I2QKhQwXbO3S88SGiNo6p3eVbUJCEpxrj-GOE1ISjhRgbJv6s1_kQEbcQdN6tJ2uaMApgix2j83smlzkFHL_L5a-wrZz_qgPdu_EGPrlbg0SZHGp5ZOLvILgn_kRExUti5rPuRLlSe-10waFpfCQ0b0ugKQsbm-hB3mlDU9LJsJV80znDVO79loMps7C3mZytSaGDKlOJtPDa1IujDGAhA6x6QKyIVJW1wTJsHvLJE8HW9BJS1230eRKZhT3wjw9ZiwmhmHyE9s-8ExD51qyn-eMIVqO_-XOQwHTJPswSOBe-twCjgzGKtXbxC20XDJtJlbVvR6xIH_TzzO39WSMuu6lfh0KU8DSjpFBKkJBwwB_pNAWFEWBEEGRDDfQXo8U4CQm-vkDPIffY6j8zt43wi1FjfnCh3qFirGyNmDmXxoeXrB2OwVIr3uCwN6MwzxGz3EAjQWJAqgUt5PjLJRI-3rjwAuSVkyU1XOl3ZLVpyg3i4I8SnB114gs0UGjzk8XE3qurXX6B9_HoL0B_yezIRg8YbqnnWpBTDnqoLut4fXpIrK0Fit8aa0HX1gA3I1C_nYR33InD1np9zcfXiV7_BErZCc6PV8ieWyRo&#34;</span> https://ygt.harbor.csse/v2/timi/busybox/manifests/0.0.1 
+HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+Server: nginx
+Date: Thu, <span style="color:#ae81ff">28</span> May <span style="color:#ae81ff">2020</span> 02:45:04 GMT
+Content-Type: application/vnd.docker.distribution.manifest.list.v2+json
+Content-Length: <span style="color:#ae81ff">741</span>
+Connection: keep-alive
+Docker-Content-Digest: sha256:3c893fa3d4b68055de597660a478f9f25c208c7ea0a9f733dd765e65802960d9
+Docker-Distribution-Api-Version: registry/2.0
+Etag: <span style="color:#e6db74">&#34;sha256:3c893fa3d4b68055de597660a478f9f25c208c7ea0a9f733dd765e65802960d9&#34;</span>
+Set-Cookie: sid<span style="color:#f92672">=</span>7aaf6c901aef47d51eefe5b66c12fd11; Path<span style="color:#f92672">=</span>/; HttpOnly
+X-Request-Id: 3a5d05bf-3dc1-4157-820d-66da1b5a58a4
+Strict-Transport-Security: max-age<span style="color:#f92672">=</span>31536000; includeSubdomains; preload
+X-Frame-Options: DENY
+Content-Security-Policy: frame-ancestors <span style="color:#e6db74">&#39;none&#39;</span>
+
+</code></pre></div><h1 id="删除manifest">删除manifest</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> curl -v  -k -X DELETE -H <span style="color:#e6db74">&#34;Accept:application/vnd.docker.distribution.manifest.v2+json&#34;</span> -H <span style="color:#e6db74">&#34;HOST:ygt.harbor.csse&#34;</span> -H <span style="color:#e6db74">&#34;Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlBEWUI6M0QzVzpDTU1MOlJWWkQ6NUg1VzpVT1ZDOjVHR1E6SDVQUDpHRlpGOjU2T086WkRTMjo2Uk5aIn0.eyJpc3MiOiJoYXJib3ItdG9rZW4taXNzdWVyIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJoYXJib3ItcmVnaXN0cnkiLCJleHAiOjE1OTA2MzU2ODIsIm5iZiI6MTU5MDYzMzg4MiwiaWF0IjoxNTkwNjMzODgyLCJqdGkiOiJTNlQxVFh5a3VYSTRiVnhIIiwiYWNjZXNzIjpbeyJ0eXBlIjoicmVwb3NpdG9yeSIsIm5hbWUiOiJ0aW1pL2J1c3lib3giLCJhY3Rpb25zIjpbInB1c2giLCIqIiwicHVsbCJdfV19.wBeHRSVAyIoxerrwOVwJ6G_tMiZWCvYk96OIqJIg9wIq8asMP1wDvtuBhGGghH8yDhfBy6I2QKhQwXbO3S88SGiNo6p3eVbUJCEpxrj-GOE1ISjhRgbJv6s1_kQEbcQdN6tJ2uaMApgix2j83smlzkFHL_L5a-wrZz_qgPdu_EGPrlbg0SZHGp5ZOLvILgn_kRExUti5rPuRLlSe-10waFpfCQ0b0ugKQsbm-hB3mlDU9LJsJV80znDVO79loMps7C3mZytSaGDKlOJtPDa1IujDGAhA6x6QKyIVJW1wTJsHvLJE8HW9BJS1230eRKZhT3wjw9ZiwmhmHyE9s-8ExD51qyn-eMIVqO_-XOQwHTJPswSOBe-twCjgzGKtXbxC20XDJtJlbVvR6xIH_TzzO39WSMuu6lfh0KU8DSjpFBKkJBwwB_pNAWFEWBEEGRDDfQXo8U4CQm-vkDPIffY6j8zt43wi1FjfnCh3qFirGyNmDmXxoeXrB2OwVIr3uCwN6MwzxGz3EAjQWJAqgUt5PjLJRI-3rjwAuSVkyU1XOl3ZLVpyg3i4I8SnB114gs0UGjzk8XE3qurXX6B9_HoL0B_yezIRg8YbqnnWpBTDnqoLut4fXpIrK0Fit8aa0HX1gA3I1C_nYR33InD1np9zcfXiV7_BErZCc6PV8ieWyRo&#34;</span> https://ygt.harbor.csse/v2/timi/busybox/manifests/sha256:3c893fa3d4b68055de597660a478f9f25c208c7ea0a9f733dd765e65802960d9
+
+</code></pre></div><p><a href="https://ivanzz1001.github.io/records/post/docker/2018/04/09/docker-harbor-auth-Bearer">参考</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/harbor/">harbor</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/07/ubuntu%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2/" data-tooltip="ubuntu登录页面">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/05/pod-%E6%8A%A2%E5%8D%A0/" data-tooltip="pod-抢占">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 lurenjia528. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/07/ubuntu%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2/" data-tooltip="ubuntu登录页面">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/05/pod-%E6%8A%A2%E5%8D%A0/" data-tooltip="pod-抢占">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">lurenjia528</h4>
+    
+      <div id="about-card-bio">后端开发</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Cloud
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Beijing
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://lurenjia528.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://lurenjia528.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/05\/harbor%E5%9F%BA%E4%BA%8Ebearer%E7%9A%84%E9%AA%8C%E8%AF%81\/';
+          
+            this.page.identifier = '\/2020\/05\/harbor%E5%9F%BA%E4%BA%8Ebearer%E7%9A%84%E9%AA%8C%E8%AF%81\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'valine';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

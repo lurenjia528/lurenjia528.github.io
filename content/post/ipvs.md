@@ -1,6 +1,6 @@
 ---
 title: ipvs
-slug: chinese-test
+#slug: chinese-test
 date: 2020-01-21
 categories:
 - linux

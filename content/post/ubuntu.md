@@ -1,6 +1,6 @@
 ---
 title: ubuntu登录页面
-slug: chinese-test
+#slug: chinese-test
 date: 2020-07-24
 categories:
 - linux

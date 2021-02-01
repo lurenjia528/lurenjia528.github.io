@@ -9,37 +9,37 @@
     <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>构建多架构镜像</title>
-      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/</link>
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/</guid>
       <description>&lt;p&gt;构建多架构镜像&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>docker挂载文件与目录</title>
-      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/08/docker%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/08/docker%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95/</guid>
       <description>&lt;p&gt;docker挂载文件与目录的不同之处&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>wsl安装docker</title>
-      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/08/wsl%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/08/wsl%E5%AE%89%E8%A3%85docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>清理docker镜像/容器</title>
-      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/06/%E6%B8%85%E7%90%86docker%E9%95%9C%E5%83%8F/%E5%AE%B9%E5%99%A8/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/06/%E6%B8%85%E7%90%86docker%E9%95%9C%E5%83%8F/%E5%AE%B9%E5%99%A8/</guid>
       <description>&lt;p&gt;清理docker镜像/容器&lt;/p&gt;</description>
     </item>
     

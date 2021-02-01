@@ -1,6 +1,6 @@
 ---
 title: redis启动错误
-slug: chinese-test
+#slug: chinese-test
 date: 2020-07-24
 categories:
 - redis

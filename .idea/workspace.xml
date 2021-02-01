@@ -23,12 +23,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/Harbor基于Bearer的验证.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/Harbor基于Bearer的验证.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/clean-docker.sh.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/clean-docker.sh.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/cobra+glog.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/cobra+glog.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/docker挂载文件，修改后不同步.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/docker挂载文件，修改后不同步.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/envoy测试.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/envoy测试.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/es.service.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/es.service.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/git.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/git.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/ipvs.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/ipvs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/kube-proxy.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/kube-proxy.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/mysql常见问题.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/mysql常见问题.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/mysql集群.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/mysql集群.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/nodeport访问失败.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/nodeport访问失败.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/pod-抢占.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/pod-抢占.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/postgresql.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/postgresql.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/prometheus-operator源码分析.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/prometheus-operator源码分析.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/redis.md" afterDir="false" />
@@ -36,6 +41,9 @@
       <change beforePath="$PROJECT_DIR$/content/post/vim.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/vim.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/wsl.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/wsl.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/构建多架构镜像.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/构建多架构镜像.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/浏览器端口.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/浏览器端口.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/系统module.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/系统module.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/自定义指标hpa.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/自定义指标hpa.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

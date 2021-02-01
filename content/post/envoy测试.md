@@ -1,6 +1,6 @@
 ---
 title: envoy测试
-slug: chinese-test
+#slug: chinese-test
 date: 2019-12-27
 categories:
 - ubuntu

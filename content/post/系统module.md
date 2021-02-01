@@ -1,6 +1,6 @@
 ---
 title: 系统模块
-slug: chinese-test
+#slug: chinese-test
 date: 2019-06-26
 categories:
 - linux

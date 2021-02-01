@@ -1,6 +1,6 @@
 ---
 title: docker挂载文件与目录
-slug: chinese-test
+#slug: chinese-test
 date: 2020-08-16
 categories:
 - ubuntu

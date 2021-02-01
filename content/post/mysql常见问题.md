@@ -1,6 +1,6 @@
 ---
 title: mysql常见问题
-slug: chinese-test
+#slug: chinese-test
 date: 2020-11-30
 categories:
 - mysql

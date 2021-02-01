@@ -1,6 +1,6 @@
 ---
 title: k8s自定义指标hpa
-slug: chinese-test
+#slug: chinese-test
 date: 2020-04-10
 categories:
 - k8s

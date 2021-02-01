@@ -9,208 +9,208 @@
     <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vim回车换行</title>
-      <link>https://lurenjia528.github.io/2021/01/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2021/01/vim%E5%9B%9E%E8%BD%A6%E6%8D%A2%E8%A1%8C/</link>
       <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2021/01/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2021/01/vim%E5%9B%9E%E8%BD%A6%E6%8D%A2%E8%A1%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nodeport访问失败</title>
-      <link>https://lurenjia528.github.io/2020/12/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/12/nodeport%E8%AE%BF%E9%97%AE%E5%A4%B1%E8%B4%A5/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/12/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/12/nodeport%E8%AE%BF%E9%97%AE%E5%A4%B1%E8%B4%A5/</guid>
       <description>&lt;p&gt;nodeport访问失败&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>k8s中部署mysql集群</title>
-      <link>https://lurenjia528.github.io/2020/11/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/11/k8s%E4%B8%AD%E9%83%A8%E7%BD%B2mysql%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/11/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/11/k8s%E4%B8%AD%E9%83%A8%E7%BD%B2mysql%E9%9B%86%E7%BE%A4/</guid>
       <description>&lt;p&gt;k8s中部署mysql集群&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>mysql常见问题</title>
-      <link>https://lurenjia528.github.io/2020/11/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/11/mysql%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/11/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/11/mysql%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;p&gt;mysql常见问题&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>prometheus-operator源码分析</title>
-      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</link>
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</guid>
       <description>&lt;p&gt;prometheus-operator源码分析&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>构建多架构镜像</title>
-      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/</link>
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/</guid>
       <description>&lt;p&gt;构建多架构镜像&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>docker挂载文件与目录</title>
-      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/08/docker%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/08/docker%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95/</guid>
       <description>&lt;p&gt;docker挂载文件与目录的不同之处&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>wsl安装docker</title>
-      <link>https://lurenjia528.github.io/2020/08/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/08/wsl%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/08/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/08/wsl%E5%AE%89%E8%A3%85docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>redis启动错误</title>
-      <link>https://lurenjia528.github.io/2020/07/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF/</link>
       <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/07/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF/</guid>
       <description>&lt;p&gt;redis启动错误&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ubuntu登录页面</title>
-      <link>https://lurenjia528.github.io/2020/07/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/07/ubuntu%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2/</link>
       <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/07/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/07/ubuntu%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2/</guid>
       <description>&lt;p&gt;登录页面去掉多余的用户,更换登录界面背景图,ulimit 修改&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>harbor基于Bearer的验证</title>
-      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/05/harbor%E5%9F%BA%E4%BA%8Ebearer%E7%9A%84%E9%AA%8C%E8%AF%81/</link>
       <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/05/harbor%E5%9F%BA%E4%BA%8Ebearer%E7%9A%84%E9%AA%8C%E8%AF%81/</guid>
       <description>&lt;p&gt;harbor基于Bearer的验证&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>pod-抢占</title>
-      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/05/pod-%E6%8A%A2%E5%8D%A0/</link>
       <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/05/pod-%E6%8A%A2%E5%8D%A0/</guid>
       <description>&lt;p&gt;k8s中pod的资源抢占&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>es.service</title>
-      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/05/es.service/</link>
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/05/es.service/</guid>
       <description>&lt;p&gt;es.service&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>git相关</title>
-      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/05/git%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/05/git%E7%9B%B8%E5%85%B3/</guid>
       <description>&lt;p&gt;git相关&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>浏览器端口</title>
-      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/</link>
       <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/</guid>
       <description>&lt;p&gt;java等应用无法在6666端口启动，是因为&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>k8s自定义指标hpa</title>
-      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/04/k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87hpa/</link>
       <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/04/k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87hpa/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cobra与glog冲突</title>
-      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/</guid>
       <description>&lt;p&gt;cobra与glog冲突&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ipvs</title>
-      <link>https://lurenjia528.github.io/2020/01/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/01/ipvs/</link>
       <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/01/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/01/ipvs/</guid>
       <description>&lt;p&gt;ipvs系统参数调整&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>envoy测试</title>
-      <link>https://lurenjia528.github.io/2019/12/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/12/envoy%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/12/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/12/envoy%E6%B5%8B%E8%AF%95/</guid>
       <description>&lt;p&gt;redis启动错误&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>postgresql</title>
-      <link>https://lurenjia528.github.io/2019/09/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/09/postgresql/</link>
       <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/09/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/09/postgresql/</guid>
       <description>&lt;p&gt;beego 操作postgresql&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kube-proxy启用ipvs</title>
-      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/06/kube-proxy%E5%90%AF%E7%94%A8ipvs/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/06/kube-proxy%E5%90%AF%E7%94%A8ipvs/</guid>
       <description>&lt;p&gt;kube-proxy启用ipvs&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>清理docker镜像/容器</title>
-      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/06/%E6%B8%85%E7%90%86docker%E9%95%9C%E5%83%8F/%E5%AE%B9%E5%99%A8/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/06/%E6%B8%85%E7%90%86docker%E9%95%9C%E5%83%8F/%E5%AE%B9%E5%99%A8/</guid>
       <description>&lt;p&gt;清理docker镜像/容器&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>系统模块</title>
-      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/06/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/06/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97/</guid>
       <description></description>
     </item>
     

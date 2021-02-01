@@ -1,6 +1,6 @@
 ---
 title: vim回车换行
-slug: chinese-test
+#slug: chinese-test
 date: 2021-01-06
 categories:
 - windows

@@ -1,6 +1,6 @@
 ---
 title: k8s中部署mysql集群
-slug: chinese-test
+#slug: chinese-test
 date: 2020-11-30
 categories:
 - k8s

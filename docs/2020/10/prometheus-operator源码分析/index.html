@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.80.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="lurenjia528">
+<meta name="keywords" content="">
+<meta name="description" content="prometheus-operator源码分析">
+
+
+<meta property="og:description" content="prometheus-operator源码分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="prometheus-operator源码分析">
+<meta name="twitter:title" content="prometheus-operator源码分析">
+<meta property="og:url" content="https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+<meta property="og:site_name" content="lurenjia528">
+<meta property="og:description" content="prometheus-operator源码分析">
+<meta name="twitter:description" content="prometheus-operator源码分析">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-10-20T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-10-20T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="go">
+    
+      <meta property="article:section" content="prometheus-operator">
+    
+  
+  
+    
+      <meta property="article:tag" content="go">
+    
+      <meta property="article:tag" content="prometheus-operator">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/img/prometheus.jpeg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/prometheus.jpeg">
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/img/prometheus.jpeg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/prometheus.jpeg">
+
+
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/ll.jpeg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
+
+
+    <title>prometheus-operator源码分析</title>
+
+    <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://lurenjia528.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://lurenjia528.github.io/">lurenjia528</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://lurenjia528.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://lurenjia528.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">lurenjia528</h4>
+        
+          <h5 class="sidebar-profile-bio">后端开发</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/lurenjia528" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://hub.docker.com/u/lurenjia" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-docker"></i>
+      
+      <span class="sidebar-button-desc">Docker</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              "
+       style="background-image:url('/img/prometheus.jpeg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      prometheus-operator源码分析
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-10-20T00:00:00Z">
+        
+  十月 20, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/go">go</a>, 
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/prometheus-operator">prometheus-operator</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>prometheus-operator源码分析</p>
+<h1 id="prometheus-operator">prometheus-operator</h1>
+<p>此次使用master分支</p>
+<h2 id="目录结构">目录结构</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+├── bundle.yaml
+├── CHANGELOG.md                                <span style="color:#75715e"># changelog文件</span>
+├── cmd                                         <span style="color:#75715e"># 命令行(二进制)</span>
+│   ├── operator                                <span style="color:#75715e"># operator</span>
+│   │   ├── main.go
+│   │   └── main_test.go
+│   ├── po-docgen
+│   │   ├── api.go
+│   │   ├── compatibility.go
+│   │   └── main.go
+│   ├── po-lint
+│   │   └── main.go
+│   ├── po-rule-migration
+│   │   └── main.go
+│   └── prometheus-config-reloader              <span style="color:#75715e"># config-reload(二进制)</span>
+│       ├── Dockerfile
+│       ├── main.go
+│       └── main_test.go
+├── code-of-conduct.md
+├── contrib
+│   └── kube-prometheus
+│       └── README.md
+├── CONTRIBUTING.md
+├── DCO
+├── Dockerfile                                  <span style="color:#75715e"># Dockerfile</span>
+├── Documentation                               <span style="color:#75715e"># 文档</span>
+│   ├── additional-scrape-config.md
+│   ├── api.md
+│   ├── compatibility.md
+│   ├── custom-configuration.md
+│   ├── custom-metrics-elements.png
+│   ├── design.md
+│   ├── exposing-metrics.md
+│   ├── high-availability.md
+│   ├── logos
+│   │   ├── prometheus-operator-logo.png
+│   │   └── prometheus-operator-logo.svg
+│   ├── network-policies.md
+│   ├── rbac-crd.md
+│   ├── rbac.md
+│   ├── thanos.md
+│   ├── troubleshooting.md
+│   └── user-guides
+│       ├── alerting.md
+│       ├── basic-auth.md
+│       ├── exposing-prometheus-and-alertmanager.md
+│       ├── getting-started.md
+│       ├── images
+│       │   └── architecture.png
+│       ├── linting.md
+│       ├── monitoring-kubernetes-ingress.md
+│       ├── running-exporters.md
+│       ├── storage.md
+│       └── webhook.md
+├── example                                                 <span style="color:#75715e"># 示例yaml</span>
+│   ├── additional-scrape-configs                           <span style="color:#75715e"># prometheus额外的配置</span>
+│   │   ├── additional-scrape-configs.yaml
+│   │   ├── prometheus-additional.yaml
+│   │   ├── prometheus-cluster-role-binding.yaml
+│   │   ├── prometheus-cluster-role.yaml
+│   │   ├── prometheus-service-account.yaml
+│   │   └── prometheus.yaml
+│   ├── alertmanger-webhook
+│   │   ├── Dockerfile
+│   │   ├── main
+│   │   ├── main.go
+│   │   └── Makefile
+│   ├── mixin
+│   │   └── alerts.yaml
+│   ├── networkpolicies                                   <span style="color:#75715e">#网络策略</span>
+│   │   ├── alertmanager.yaml
+│   │   ├── grafana.yaml
+│   │   ├── kube-state-metrics.yaml
+│   │   ├── node-exporter.yaml
+│   │   └── prometheus.yaml
+│   ├── non-rbac                                        <span style="color:#75715e"># 非rbac</span>
+│   │   ├── prometheus-operator.yaml
+│   │   └── prometheus.yaml
+│   ├── prometheus-operator-crd                         <span style="color:#75715e"># operator-crd</span>
+│   │   ├── monitoring.coreos.com_alertmanagers.yaml
+│   │   ├── monitoring.coreos.com_podmonitors.yaml
+│   │   ├── monitoring.coreos.com_probes.yaml
+│   │   ├── monitoring.coreos.com_prometheuses.yaml
+│   │   ├── monitoring.coreos.com_prometheusrules.yaml
+│   │   ├── monitoring.coreos.com_servicemonitors.yaml
+│   │   └── monitoring.coreos.com_thanosrulers.yaml
+│   ├── rbac                                                <span style="color:#75715e"># rbac</span>
+│   │   ├── prometheus
+│   │   │   ├── prometheus-cluster-role-binding.yaml
+│   │   │   ├── prometheus-cluster-role.yaml
+│   │   │   ├── prometheus-service-account.yaml
+│   │   │   └── prometheus.yaml
+│   │   ├── prometheus-operator
+│   │   │   ├── prometheus-operator-cluster-role-binding.yaml
+│   │   │   ├── prometheus-operator-cluster-role.yaml
+│   │   │   ├── prometheus-operator-deployment.yaml
+│   │   │   ├── prometheus-operator-service-account.yaml
+│   │   │   ├── prometheus-operator-service-monitor.yaml
+│   │   │   └── prometheus-operator-service.yaml
+│   │   └── prometheus-operator-crd
+│   │       └── prometheus-operator-crd-cluster-roles.yaml
+│   ├── storage                                                 <span style="color:#75715e"># 存储</span>
+│   │   ├── persisted-prometheus.yaml
+│   │   └── storageclass.yaml
+│   ├── thanos                                                  <span style="color:#75715e"># thanos(prometheus集群方案)</span>
+│   │   ├── prometheus-role-binding.yaml
+│   │   ├── prometheus-role.yaml
+│   │   ├── prometheus-servicemonitor.yaml
+│   │   ├── prometheus-service.yaml
+│   │   ├── prometheus.yaml
+│   │   ├── query-deployment.yaml
+│   │   ├── query-service.yaml
+│   │   ├── sidecar-service.yaml
+│   │   ├── thanos-ruler-service.yaml
+│   │   └── thanos-ruler.yaml
+│   └── user-guides                                        <span style="color:#75715e"># 使用向导</span>
+│       ├── alerting
+│       │   ├── alertmanager-example-service.yaml
+│       │   ├── alertmanager-example.yaml
+│       │   ├── alertmanager.yaml
+│       │   ├── prometheus-example-rules.yaml
+│       │   └── prometheus-example.yaml
+│       └── getting-started
+│           ├── example-app-deployment.yaml
+│           ├── example-app-pod-monitor.yaml
+│           ├── example-app-service-monitor.yaml
+│           ├── example-app-service.yaml
+│           ├── prometheus-admin-api.yaml
+│           ├── prometheus-pod-monitor.yaml
+│           ├── prometheus-service-monitor.yaml
+│           └── prometheus-service.yaml
+├── go.mod                                                  <span style="color:#75715e"># 包管理</span>
+├── go.sum
+├── helm
+│   └── README.md
+├── jsonnet
+│   ├── mixin
+│   │   ├── alerts
+│   │   │   └── alerts.libsonnet
+│   │   ├── alerts.jsonnet
+│   │   ├── config.libsonnet
+│   │   └── mixin.libsonnet
+│   └── prometheus-operator
+│       ├── alertmanager-crd.libsonnet
+│       ├── jsonnetfile.json
+│       ├── podmonitor-crd.libsonnet
+│       ├── probe-crd.libsonnet
+│       ├── prometheus-crd.libsonnet
+│       ├── prometheus-operator.libsonnet
+│       ├── prometheusrule-crd.libsonnet
+│       ├── servicemonitor-crd.libsonnet
+│       └── thanosruler-crd.libsonnet
+├── kustomization.yaml
+├── LICENSE
+├── MAINTAINERS.md
+├── Makefile
+├── NOTICE
+├── pkg                                                 <span style="color:#75715e"># 源码</span>
+│   ├── admission                                 <span style="color:#75715e"># prometheusrule的验证</span>
+│   │   ├── admission.go
+│   │   ├── admission_test.go
+│   │   ├── admissiontypes.go
+│   │   └── jsonpatch.go
+│   ├── alertmanager                              <span style="color:#75715e"># alertmanager</span>
+│   │   ├── collector.go
+│   │   ├── operator.go
+│   │   ├── operator_test.go
+│   │   ├── statefulset.go
+│   │   └── statefulset_test.go
+│   ├── api                                       <span style="color:#75715e"># api的注册</span>
+│   │   └── api.go
+│   ├── apis                                      <span style="color:#75715e"># api的注册</span>
+│   │   └── monitoring
+│   │       ├── register.go
+│   │       └── v1
+│   │           ├── doc.go
+│   │           ├── register.go
+│   │           ├── thanos_types.go
+│   │           ├── types.go
+│   │           ├── types_test.go
+│   │           └── zz_generated.deepcopy.go
+│   ├── client                                  <span style="color:#75715e"># 客户端</span>
+│   │   ├── informers
+│   │   │   └── externalversions
+│   │   │       ├── factory.go
+│   │   │       ├── generic.go
+│   │   │       ├── internalinterfaces
+│   │   │       │   └── factory_interfaces.go
+│   │   │       └── monitoring
+│   │   │           ├── interface.go
+│   │   │           └── v1
+│   │   │               ├── alertmanager.go
+│   │   │               ├── interface.go
+│   │   │               ├── podmonitor.go
+│   │   │               ├── probe.go
+│   │   │               ├── prometheus.go
+│   │   │               ├── prometheusrule.go
+│   │   │               ├── servicemonitor.go
+│   │   │               └── thanosruler.go
+│   │   ├── listers
+│   │   │   └── monitoring
+│   │   │       └── v1
+│   │   │           ├── alertmanager.go
+│   │   │           ├── expansion_generated.go
+│   │   │           ├── podmonitor.go
+│   │   │           ├── probe.go
+│   │   │           ├── prometheus.go
+│   │   │           ├── prometheusrule.go
+│   │   │           ├── servicemonitor.go
+│   │   │           └── thanosruler.go
+│   │   └── versioned
+│   │       ├── clientset.go
+│   │       ├── doc.go
+│   │       ├── fake
+│   │       │   ├── clientset_generated.go
+│   │       │   ├── doc.go
+│   │       │   └── register.go
+│   │       ├── scheme
+│   │       │   ├── doc.go
+│   │       │   └── register.go
+│   │       └── typed
+│   │           └── monitoring
+│   │               └── v1
+│   │                   ├── alertmanager.go
+│   │                   ├── doc.go
+│   │                   ├── fake
+│   │                   │   ├── doc.go
+│   │                   │   ├── fake_alertmanager.go
+│   │                   │   ├── fake_monitoring_client.go
+│   │                   │   ├── fake_podmonitor.go
+│   │                   │   ├── fake_probe.go
+│   │                   │   ├── fake_prometheus.go
+│   │                   │   ├── fake_prometheusrule.go
+│   │                   │   ├── fake_servicemonitor.go
+│   │                   │   └── fake_thanosruler.go
+│   │                   ├── generated_expansion.go
+│   │                   ├── monitoring_client.go
+│   │                   ├── podmonitor.go
+│   │                   ├── probe.go
+│   │                   ├── prometheus.go
+│   │                   ├── prometheusrule.go
+│   │                   ├── servicemonitor.go
+│   │                   └── thanosruler.go
+│   ├── k8sutil                             <span style="color:#75715e"># k8s工具</span>
+│   │   ├── k8sutil.go
+│   │   ├── k8sutil_test.go
+│   │   ├── merge.go
+│   │   └── merge_test.go
+│   ├── listwatch                           <span style="color:#75715e"># list/watch</span>
+│   │   ├── listwatch.go
+│   │   ├── listwatch_test.go
+│   │   ├── namespace_denylist.go
+│   │   └── namespace_denylist_test.go
+│   ├── namespace-labeler
+│   │   ├── labeler.go
+│   │   └── labeler_test.go
+│   ├── operator                            <span style="color:#75715e"># operator</span>
+│   │   ├── defaults.go
+│   │   ├── image.go
+│   │   ├── image_test.go
+│   │   ├── operator.go
+│   │   ├── server.go
+│   │   ├── server_test.go
+│   │   └── types.go
+│   ├── prometheus                          <span style="color:#75715e"># prometheus</span>
+│   │   ├── collector.go
+│   │   ├── operator.go
+│   │   ├── operator_test.go
+│   │   ├── promcfg.go
+│   │   ├── promcfg_test.go
+│   │   ├── rules.go
+│   │   ├── rules_test.go
+│   │   ├── statefulset.go
+│   │   └── statefulset_test.go
+│   ├── thanos                              <span style="color:#75715e"># thanos</span>
+│   │   ├── collector.go
+│   │   ├── operator.go
+│   │   ├── operator_test.go
+│   │   ├── rules.go
+│   │   ├── statefulset.go
+│   │   └── statefulset_test.go
+│   └── version
+│       └── version.go
+├── README.md
+├── RELEASE.md
+├── scripts                                             <span style="color:#75715e"># 脚本</span>
+│   ├── check_license.sh
+│   ├── create-minikube.sh
+│   ├── delete-minikube.sh
+│   ├── generate
+│   │   ├── build-non-rbac-prometheus-operator.sh
+│   │   ├── build-rbac-prometheus-operator.sh
+│   │   ├── jsonnetfile.json
+│   │   ├── prometheus-operator-non-rbac.jsonnet
+│   │   └── prometheus-operator-rbac.jsonnet
+│   ├── generate-bundle.sh
+│   ├── generate-crds.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── minikube-rbac.yaml
+│   ├── run-external.sh
+│   ├── tooling
+│   │   └── Dockerfile
+│   ├── tools.go
+│   ├── travis-e2e.sh
+│   └── travis-push-docker-image.sh
+├── test
+│   ├── e2e
+│   │   ├── alertmanager_instance_namespaces_test.go
+│   │   ├── alertmanager_test.go
+│   │   ├── denylist_test.go
+│   │   ├── main_test.go
+│   │   ├── prometheus_instance_namespaces_test.go
+│   │   ├── prometheus_test.go
+│   │   ├── README.md
+│   │   ├── remote_write_certs
+│   │   │   ├── bad_ca.crt
+│   │   │   ├── bad_ca.key
+│   │   │   ├── bad_client.crt
+│   │   │   ├── bad_client.key
+│   │   │   ├── ca.crt
+│   │   │   ├── ca.key
+│   │   │   ├── client.crt
+│   │   │   └── client.key
+│   │   └── thanosruler_test.go
+│   ├── framework
+│   │   ├── admission-webhooks.go
+│   │   ├── alertmanager.go
+│   │   ├── cluster_role_binding.go
+│   │   ├── cluster_role.go
+│   │   ├── config_map.go
+│   │   ├── context.go
+│   │   ├── crd.go
+│   │   ├── deployment.go
+│   │   ├── event.go
+│   │   ├── framework.go
+│   │   ├── helpers.go
+│   │   ├── ingress.go
+│   │   ├── namespace.go
+│   │   ├── pod.go
+│   │   ├── probe.go
+│   │   ├── prometheus.go
+│   │   ├── prometheus_rule.go
+│   │   ├── replication-controller.go
+│   │   ├── ressources
+│   │   │   ├── alertmanager-main-secret.yaml
+│   │   │   ├── basic-auth-app-deployment.yaml
+│   │   │   ├── default-http-backend-service.yml
+│   │   │   ├── default-http-backend.yml
+│   │   │   ├── nxginx-ingress-controller.yml
+│   │   │   ├── prometheus-operator-mutatingwebhook.yaml
+│   │   │   ├── prometheus-operator-validatingwebhook.yaml
+│   │   │   └── prometheus-role-binding.yml
+│   │   ├── role-binding.go
+│   │   ├── secret.go
+│   │   ├── service_account.go 
+│   │   ├── service.go
+│   │   └── thanosruler.go
+│   └── instrumented-sample-app
+│       ├── Dockerfile
+│       ├── main.go
+│       ├── Makefile
+│       └── VERSION
+└── VERSION
+
+</code></pre></div><h2 id="源码分析">源码分析</h2>
+<p>启动入口：</p>
+<p>cmd/operator/main.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#a6e22e">Main</span>())
+</code></pre></div><p>prometheus注册：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#ae81ff">247</span>:	<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">prometheus</span>.<span style="color:#a6e22e">NewRegistry</span>()
+	    <span style="color:#a6e22e">po</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">prometheuscontroller</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">cfg</span>, <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">With</span>(<span style="color:#a6e22e">logger</span>, <span style="color:#e6db74">&#34;component&#34;</span>, <span style="color:#e6db74">&#34;prometheusoperator&#34;</span>), <span style="color:#a6e22e">r</span>)
+	    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+	    	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Fprint</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stderr</span>, <span style="color:#e6db74">&#34;instantiating prometheus controller failed: &#34;</span>, <span style="color:#a6e22e">err</span>)
+	    	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+	    }
+<span style="color:#f92672">...</span>
+<span style="color:#ae81ff">327</span>:	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Go</span>(<span style="color:#66d9ef">func</span>() <span style="color:#66d9ef">error</span> { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">po</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>()) })
+	    <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Go</span>(<span style="color:#66d9ef">func</span>() <span style="color:#66d9ef">error</span> { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ao</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>()) })
+	    <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Go</span>(<span style="color:#66d9ef">func</span>() <span style="color:#66d9ef">error</span> { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Done</span>()) })
+
+</code></pre></div><p>pkg/prometheus/operator.go +182</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#ae81ff">181</span>: <span style="color:#75715e">// New creates a new controller.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">conf</span> <span style="color:#a6e22e">Config</span>, <span style="color:#a6e22e">logger</span> <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Logger</span>, <span style="color:#a6e22e">r</span> <span style="color:#a6e22e">prometheus</span>.<span style="color:#a6e22e">Registerer</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">Operator</span>, <span style="color:#66d9ef">error</span>) {
+	
+}
+
+<span style="color:#ae81ff">484</span>: <span style="color:#75715e">// Run the controller.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Operator</span>) <span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span> <span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{}) <span style="color:#66d9ef">error</span> {
+	
+<span style="color:#f92672">...</span>
+<span style="color:#ae81ff">509</span>:	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">worker</span>() <span style="color:#75715e">//执行队列
+</span><span style="color:#75715e"></span>
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">promInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">smonInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">pmonInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">probeInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ruleInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">cmapInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">secrInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ssetInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">nsMonInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">nsPromInf</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">nsMonInf</span> {
+		<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">nsPromInf</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">stopc</span>)
+	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">waitForCacheSync</span>(<span style="color:#a6e22e">stopc</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+	}
+<span style="color:#75715e">// 添加事件处理
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">526</span>:	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">addHandlers</span>()
+
+}
+
+<span style="color:#75715e">// 事件处理
+</span><span style="color:#75715e">// addHandlers adds the eventhandlers to the informers.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Operator</span>) <span style="color:#a6e22e">addHandlers</span>() {
+	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">promInf</span>.<span style="color:#a6e22e">AddEventHandler</span>(<span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">ResourceEventHandlerFuncs</span>{
+		<span style="color:#a6e22e">AddFunc</span>:    <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">handlePrometheusAdd</span>,    <span style="color:#75715e">// 创建
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">DeleteFunc</span>: <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">handlePrometheusDelete</span>, <span style="color:#75715e">//删除
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">UpdateFunc</span>: <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">handlePrometheusUpdate</span>, <span style="color:#75715e">//更新
+</span><span style="color:#75715e"></span>	})
+<span style="color:#f92672">...</span>
+}
+
+<span style="color:#75715e">// worker runs a worker thread that just dequeues items, processes them, and
+</span><span style="color:#75715e">// marks them done. It enforces that the syncHandler is never invoked
+</span><span style="color:#75715e">// concurrently with the same key.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Operator</span>) <span style="color:#a6e22e">worker</span>() {
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">processNextWorkItem</span>() {
+	}
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Operator</span>) <span style="color:#a6e22e">processNextWorkItem</span>() <span style="color:#66d9ef">bool</span> {
+	<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">quit</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">queue</span>.<span style="color:#a6e22e">Get</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">quit</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+	}
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">queue</span>.<span style="color:#a6e22e">Done</span>(<span style="color:#a6e22e">key</span>)
+
+	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">metrics</span>.<span style="color:#a6e22e">ReconcileCounter</span>().<span style="color:#a6e22e">Inc</span>()
+	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">sync</span>(<span style="color:#a6e22e">key</span>.(<span style="color:#66d9ef">string</span>))
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">queue</span>.<span style="color:#a6e22e">Forget</span>(<span style="color:#a6e22e">key</span>)
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+	}
+
+	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">metrics</span>.<span style="color:#a6e22e">ReconcileErrorsCounter</span>().<span style="color:#a6e22e">Inc</span>()
+	<span style="color:#a6e22e">utilruntime</span>.<span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">Wrap</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;Sync %q failed&#34;</span>, <span style="color:#a6e22e">key</span>)))
+	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">queue</span>.<span style="color:#a6e22e">AddRateLimited</span>(<span style="color:#a6e22e">key</span>)
+
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+}
+
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Operator</span>) <span style="color:#a6e22e">sync</span>(<span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#f92672">...</span>
+<span style="color:#ae81ff">1241</span>:	<span style="color:#a6e22e">sset</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">makeStatefulSet</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">p</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">config</span>, <span style="color:#a6e22e">ruleConfigMapNames</span>, <span style="color:#a6e22e">newSSetInputHash</span>)
+<span style="color:#f92672">...</span>
+}
+</code></pre></div><p>pkg/prometheus/statefulset.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">makeStatefulSet</span>(
+	<span style="color:#a6e22e">p</span> <span style="color:#a6e22e">monitoringv1</span>.<span style="color:#a6e22e">Prometheus</span>,
+	<span style="color:#a6e22e">config</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Config</span>,
+	<span style="color:#a6e22e">ruleConfigMapNames</span> []<span style="color:#66d9ef">string</span>,
+	<span style="color:#a6e22e">inputHash</span> <span style="color:#66d9ef">string</span>,
+) (<span style="color:#f92672">*</span><span style="color:#a6e22e">appsv1</span>.<span style="color:#a6e22e">StatefulSet</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#75715e">// p is passed in by value, not by reference. But p contains references like
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// to annotation map, that do not get copied on function invocation. Ensure to
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// prevent side effects before editing p by creating a deep copy. For more
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// details see https://github.com/prometheus-operator/prometheus-operator/issues/1659.
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">p</span> = <span style="color:#f92672">*</span><span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">DeepCopy</span>()
+<span style="color:#f92672">...</span>
+}
+</code></pre></div>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/go/">go</a>
+
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/prometheus-operator/">prometheus-operator</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/11/mysql%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" data-tooltip="mysql常见问题">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/" data-tooltip="构建多架构镜像">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 lurenjia528. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/11/mysql%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" data-tooltip="mysql常见问题">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/" data-tooltip="构建多架构镜像">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">lurenjia528</h4>
+    
+      <div id="about-card-bio">后端开发</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Cloud
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Beijing
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://lurenjia528.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://lurenjia528.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/10\/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90\/';
+          
+            this.page.identifier = '\/2020\/10\/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'valine';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

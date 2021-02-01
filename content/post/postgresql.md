@@ -1,6 +1,6 @@
 ---
 title: postgresql
-slug: chinese-test
+#slug: chinese-test
 date: 2019-09-05
 categories:
 - go

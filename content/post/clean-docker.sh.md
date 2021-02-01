@@ -1,6 +1,6 @@
 ---
 title: 清理docker镜像/容器
-slug: chinese-test
+#slug: chinese-test
 date: 2019-06-26
 categories:
 - ubuntu

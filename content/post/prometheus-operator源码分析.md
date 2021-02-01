@@ -1,6 +1,6 @@
 ---
 title: prometheus-operator源码分析
-slug: chinese-test
+#slug: chinese-test
 date: 2020-10-20
 categories:
 - go

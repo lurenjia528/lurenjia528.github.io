@@ -1,6 +1,6 @@
 ---
 title: es.service
-slug: chinese-test
+#slug: chinese-test
 date: 2020-05-20
 categories:
 - ubuntu

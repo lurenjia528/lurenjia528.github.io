@@ -1,6 +1,6 @@
 ---
 title: git相关
-slug: chinese-test
+#slug: chinese-test
 date: 2020-05-19
 categories:
 - ubuntu

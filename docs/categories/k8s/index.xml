@@ -9,46 +9,46 @@
     <lastBuildDate>Thu, 17 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/k8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>nodeport访问失败</title>
-      <link>https://lurenjia528.github.io/2020/12/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/12/nodeport%E8%AE%BF%E9%97%AE%E5%A4%B1%E8%B4%A5/</link>
       <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/12/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/12/nodeport%E8%AE%BF%E9%97%AE%E5%A4%B1%E8%B4%A5/</guid>
       <description>&lt;p&gt;nodeport访问失败&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>k8s中部署mysql集群</title>
-      <link>https://lurenjia528.github.io/2020/11/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/11/k8s%E4%B8%AD%E9%83%A8%E7%BD%B2mysql%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Mon, 30 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/11/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/11/k8s%E4%B8%AD%E9%83%A8%E7%BD%B2mysql%E9%9B%86%E7%BE%A4/</guid>
       <description>&lt;p&gt;k8s中部署mysql集群&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>pod-抢占</title>
-      <link>https://lurenjia528.github.io/2020/05/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/05/pod-%E6%8A%A2%E5%8D%A0/</link>
       <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/05/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/05/pod-%E6%8A%A2%E5%8D%A0/</guid>
       <description>&lt;p&gt;k8s中pod的资源抢占&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>k8s自定义指标hpa</title>
-      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/04/k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87hpa/</link>
       <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/04/k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E6%A0%87hpa/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kube-proxy启用ipvs</title>
-      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/06/kube-proxy%E5%90%AF%E7%94%A8ipvs/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/06/kube-proxy%E5%90%AF%E7%94%A8ipvs/</guid>
       <description>&lt;p&gt;kube-proxy启用ipvs&lt;/p&gt;</description>
     </item>
     

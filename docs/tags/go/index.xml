@@ -9,28 +9,28 @@
     <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>prometheus-operator源码分析</title>
-      <link>https://lurenjia528.github.io/2020/10/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</link>
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/10/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</guid>
       <description>&lt;p&gt;prometheus-operator源码分析&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>cobra与glog冲突</title>
-      <link>https://lurenjia528.github.io/2020/04/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/04/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/</guid>
       <description>&lt;p&gt;cobra与glog冲突&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>postgresql</title>
-      <link>https://lurenjia528.github.io/2019/09/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/09/postgresql/</link>
       <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/09/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/09/postgresql/</guid>
       <description>&lt;p&gt;beego 操作postgresql&lt;/p&gt;</description>
     </item>
     

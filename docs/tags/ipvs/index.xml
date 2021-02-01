@@ -9,19 +9,19 @@
     <lastBuildDate>Tue, 21 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/tags/ipvs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ipvs</title>
-      <link>https://lurenjia528.github.io/2020/01/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2020/01/ipvs/</link>
       <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2020/01/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2020/01/ipvs/</guid>
       <description>&lt;p&gt;ipvs系统参数调整&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kube-proxy启用ipvs</title>
-      <link>https://lurenjia528.github.io/2019/06/chinese-test/</link>
+      <link>https://lurenjia528.github.io/2019/06/kube-proxy%E5%90%AF%E7%94%A8ipvs/</link>
       <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lurenjia528.github.io/2019/06/chinese-test/</guid>
+      <guid>https://lurenjia528.github.io/2019/06/kube-proxy%E5%90%AF%E7%94%A8ipvs/</guid>
       <description>&lt;p&gt;kube-proxy启用ipvs&lt;/p&gt;</description>
     </item>
     

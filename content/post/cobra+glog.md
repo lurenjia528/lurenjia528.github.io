@@ -1,6 +1,6 @@
 ---
 title: cobra与glog冲突
-slug: chinese-test
+#slug: chinese-test
 date: 2020-04-07
 categories:
 - ubuntu

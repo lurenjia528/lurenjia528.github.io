@@ -1,6 +1,6 @@
 ---
 title: wsl安装docker
-slug: chinese-test
+#slug: chinese-test
 date: 2020-08-16
 categories:
 - windows

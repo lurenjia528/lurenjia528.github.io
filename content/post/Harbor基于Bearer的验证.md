@@ -1,6 +1,6 @@
 ---
 title: harbor基于Bearer的验证
-slug: chinese-test
+#slug: chinese-test
 date: 2020-05-28
 categories:
 - harbor

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.80.0 with theme Tranquilpeak 0.4.8-BETA">
+<meta name="author" content="lurenjia528">
+<meta name="keywords" content="">
+<meta name="description" content="构建多架构镜像">
+
+
+<meta property="og:description" content="构建多架构镜像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建多架构镜像">
+<meta name="twitter:title" content="构建多架构镜像">
+<meta property="og:url" content="https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/">
+<meta property="og:site_name" content="lurenjia528">
+<meta property="og:description" content="构建多架构镜像">
+<meta name="twitter:description" content="构建多架构镜像">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-10-20T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-10-20T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="docker">
+    
+  
+  
+    
+      <meta property="article:tag" content="docker">
+    
+      <meta property="article:tag" content="arm64">
+    
+      <meta property="article:tag" content="amd64">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/img/docker.jpg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/docker.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://lurenjia528.github.io/ll.jpeg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
+
+
+    <title>构建多架构镜像</title>
+
+    <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
+    
+
+    
+
+    <link rel="canonical" href="https://lurenjia528.github.io/2020/10/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://lurenjia528.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://lurenjia528.github.io/">lurenjia528</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://lurenjia528.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://lurenjia528.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">lurenjia528</h4>
+        
+          <h5 class="sidebar-profile-bio">后端开发</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/lurenjia528" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://hub.docker.com/u/lurenjia" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-docker"></i>
+      
+      <span class="sidebar-button-desc">Docker</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://lurenjia528.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      构建多架构镜像
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-10-20T00:00:00Z">
+        
+  十月 20, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/docker">docker</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>构建多架构镜像</p>
+<h1 id="构建多架构镜像">构建多架构镜像</h1>
+<h2 id="harbor目前不支持harbor说20支持此功能">harbor目前不支持，harbor说2.0支持此功能</h2>
+<h2 id="测试环境">测试环境：</h2>
+<p>本机：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Linux HT061 4.13.0-36-generic <span style="color:#75715e">#40~16.04.1-Ubuntu SMP Fri Feb 16 23:25:58 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span>
+</code></pre></div><p>docker :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker version
+Client: Docker Engine - Community
+Version:           19.03.8
+API version:       1.40
+Go version:        go1.12.17
+Git commit:        afacb8b7f0
+Built:             Wed Mar <span style="color:#ae81ff">11</span> 01:25:46 <span style="color:#ae81ff">2020</span>
+OS/Arch:           linux/amd64
+Experimental:      true
+
+Server: Docker Engine - Community
+Engine:
+Version:          19.03.8
+API version:      1.40 <span style="color:#f92672">(</span>minimum version 1.12<span style="color:#f92672">)</span>
+Go version:       go1.12.17
+Git commit:       afacb8b7f0
+Built:            Wed Mar <span style="color:#ae81ff">11</span> 01:24:19 <span style="color:#ae81ff">2020</span>
+OS/Arch:          linux/amd64
+Experimental:     true
+containerd:
+Version:          1.2.6
+GitCommit:        894b81a4b802e4eb2a91d1ce216b8817763c29fb
+runc:
+Version:          1.0.0-rc8
+GitCommit:        425e105d5a03fabd737a126ad93d62a9eeede87f
+docker-init:
+Version:          0.18.0
+GitCommit:        fec3683
+</code></pre></div><p>服务器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Linux storage 4.4.13-20170224.kylin.5.YUN+ <span style="color:#75715e">#51 SMP Mon Apr 10 14:11:02 CST 2017 aarch64 aarch64 aarch64 GNU/Linux</span>
+
+</code></pre></div><p>docker:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> docker version
+Client:
+ Version:      17.03.2-ce-rc1
+ API version:  1.27
+ Go version:   go1.9.2
+ Git commit:   eef6495
+ Built:        Wed Nov <span style="color:#ae81ff">15</span> 13:33:44 <span style="color:#ae81ff">2017</span>
+ OS/Arch:      linux/arm64
+
+Server:
+ Version:      17.03.2-ce-rc1
+ API version:  1.27 <span style="color:#f92672">(</span>minimum version 1.12<span style="color:#f92672">)</span>
+ Go version:   go1.9.2
+ Git commit:   eef6495
+ Built:        Wed Nov <span style="color:#ae81ff">15</span> 13:33:44 <span style="color:#ae81ff">2017</span>
+ OS/Arch:      linux/arm64
+ Experimental: false
+
+</code></pre></div><h2 id="开始">开始</h2>
+<h3 id="1-docker-version要求">1. docker version要求</h3>
+<p>Docker 版本不低于 19.03 且开启buildx
+<code>export DOCKER_CLI_EXPERIMENTAL=enabled</code>或者</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /etc/docker/daemon.json 
+<span style="color:#f92672">{</span>
+   <span style="color:#e6db74">&#34;experimental&#34;</span>: true
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker buildx --help 
+
+Usage:	docker buildx COMMAND
+
+Build with BuildKit
+
+Management Commands:
+  imagetools  Commands to work on images in registry
+
+Commands:
+  bake        Build from a file
+  build       Start a build
+  create      Create a new builder instance
+  inspect     Inspect current builder instance
+  ls          List builder instances
+  rm          Remove a builder instance
+  stop        Stop builder instance
+  use         Set the current builder instance
+  version     Show buildx version information 
+
+Run <span style="color:#e6db74">&#39;docker buildx COMMAND --help&#39;</span> <span style="color:#66d9ef">for</span> more information on a command.
+
+</code></pre></div><h3 id="2-启用-binfmt_misc">2. 启用 binfmt_misc</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm --privileged docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
+</code></pre></div><p>验证是 binfmt_misc 否开启：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/  ls -al /proc/sys/fs/binfmt_misc/
+总用量 <span style="color:#ae81ff">0</span>
+drwxr-xr-x <span style="color:#ae81ff">2</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 .
+dr-xr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:05 ..
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 ksh
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 llvm-6.0-runtime.binfmt
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 python2.7
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 python3.5
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 python3.6
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">9</span> 08:49 qemu-aarch64
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">9</span> 08:49 qemu-arm
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">9</span> 08:49 qemu-ppc64le
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">9</span> 08:49 qemu-riscv64
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">9</span> 08:49 qemu-s390x
+--w------- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 register
+-rw-r--r-- <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> 4月   <span style="color:#ae81ff">7</span> 09:06 status
+
+</code></pre></div><p>验证是否启用了相应的处理器:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/  cat /proc/sys/fs/binfmt_misc/qemu-aarch64
+enabled
+interpreter /usr/bin/qemu-aarch64
+flags: OCF
+offset <span style="color:#ae81ff">0</span>
+magic 7f454c460201010000000000000000000200b7
+mask ffffffffffffff00fffffffffffffffffeffff
+
+</code></pre></div><h3 id="3-从默认的构建器切换到多平台构建器">3. 从默认的构建器切换到多平台构建器</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:~#  docker buildx create --use --name mybuilder
+mybuilder
+</code></pre></div><p>启动构建器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:~#  docker buildx inspect mybuilder --bootstrap
+</code></pre></div><p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-buildx-inspect.png" alt=""></p>
+<p>查看当前使用的构建器及构建器支持的 CPU 架构，可以看到支持很多 CPU 架构:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:~#  docker buildx ls
+</code></pre></div><p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-buildx-ls.png" alt=""></p>
+<h3 id="4-准备代码和dockerfile">4. 准备代码和Dockerfile</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/mutiarch# cat hello.go 
+package main
+
+import <span style="color:#f92672">(</span>
+        <span style="color:#e6db74">&#34;fmt&#34;</span>
+        <span style="color:#e6db74">&#34;runtime&#34;</span>
+<span style="color:#f92672">)</span>
+
+func main<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        fmt.Printf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello, %s!\n&#34;</span>, runtime.GOARCH<span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+root@HT061:/home/ht061/桌面/mutiarch# cat Dockerfile 
+FROM golang:alpine AS builder
+RUN mkdir /app
+ADD . /app/
+WORKDIR /app
+RUN go build -o hello .
+
+FROM alpine
+RUN mkdir /app
+WORKDIR /app
+COPY --from<span style="color:#f92672">=</span>builder /app/hello .
+CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;./hello&#34;</span><span style="color:#f92672">]</span>
+
+</code></pre></div><p>golang和alpine都是支持多架构的
+golang:alpine镜像：
+<img src="https://lurenjia528.github.io/img/docker-multiarch/golang-alpine.png" alt="">
+alpine镜像：
+<img src="https://lurenjia528.github.io/img/docker-multiarch/alpine.png" alt=""></p>
+<h3 id="5-buildpush">5. build/push</h3>
+<p>build镜像并push到dockerhub</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/mutiarch#  docker buildx build -t lurenjia/hello-arch --platform<span style="color:#f92672">=</span>linux/arm64,linux/amd64    . --push 
+</code></pre></div><p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-buildx-build.png" alt=""></p>
+<p>查看不同架构信息：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/mutiarch# docker manifest inspect lurenjia/hello-arch
+</code></pre></div><p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-manifest-inspect.png" alt=""></p>
+<h3 id="6-pull--测试">6. pull / 测试</h3>
+<p>由于之前已经启用了 binfmt_misc，现在我们就可以运行任何 CPU 架构的 Docker 镜像了，因此可以在本地系统上测试之前生成的 2个镜像是否有问题。
+现在就可以通过 docker pull lurenjia/hello-arch 拉取刚刚创建的镜像了，Docker 将会根据你的 CPU 架构拉取匹配的镜像</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/mutiarch# docker buildx imagetools inspect lurenjia/hello-arch
+</code></pre></div><p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-buildx-imagetools-inspect.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/mutiarch# docker run --rm docker.io/lurenjia/hello-arch:latest@sha256:cccc0329458f6a4a6a689080a8631b3634feeda5792ed0f6d00bc3fc86c02961
+
+root@HT061:/home/ht061/桌面/mutiarch#  docker run --rm  docker.io/lurenjia/hello-arch:latest@sha256:5a99f4cd5f90b03e63a77e6646e6eda8daa297f492d22b5a3e061181da966bfd
+</code></pre></div><p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-run.png" alt=""></p>
+<p>docker pull  / docker run 测试</p>
+<p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-pull-run.png" alt=""></p>
+<p>在arm64上：</p>
+<p><img src="https://lurenjia528.github.io/img/docker-multiarch/docker-pull-run-arm64.png" alt=""></p>
+<h1 id="原生仓库支持此功能">原生仓库支持此功能</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/registry# ./test-registry.sh 192.168.17.187:5000/arch
+Warning: some commands will fail <span style="color:#66d9ef">if</span> you are not authenticated to 192.168.17.187:5000/arch
+&gt;&gt; 1: Pulling required images from DockerHub
+&gt;&gt; 2: Tagging and pushing images to registry 192.168.17.187:5000/arch
+docker tag s390x/alpine:latest 192.168.17.187:5000/arch/s390x_alpine:latest
+The push refers to repository <span style="color:#f92672">[</span>192.168.17.187:5000/arch/s390x_alpine<span style="color:#f92672">]</span>
+b0f4d46f0129: Mounted from s390x_alpine 
+latest: digest: sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de size: <span style="color:#ae81ff">528</span>
+docker tag ppc64le/alpine:latest 192.168.17.187:5000/arch/ppc64le_alpine:latest
+The push refers to repository <span style="color:#f92672">[</span>192.168.17.187:5000/arch/ppc64le_alpine<span style="color:#f92672">]</span>
+d80722399fe1: Mounted from ppc64le_alpine 
+latest: digest: sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c size: <span style="color:#ae81ff">528</span>
+docker tag aarch64/alpine:latest 192.168.17.187:5000/arch/aarch64_alpine:latest
+The push refers to repository <span style="color:#f92672">[</span>192.168.17.187:5000/arch/aarch64_alpine<span style="color:#f92672">]</span>
+6b5c485d13f0: Mounted from aarch64_alpine 
+latest: digest: sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef size: <span style="color:#ae81ff">528</span>
+docker tag alpine:latest 192.168.17.187:5000/arch/amd64_alpine:latest
+The push refers to repository <span style="color:#f92672">[</span>192.168.17.187:5000/arch/amd64_alpine<span style="color:#f92672">]</span>
+beee9f30bc1f: Mounted from amd64_alpine 
+latest: digest: sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221 size: <span style="color:#ae81ff">528</span>
+&gt;&gt; 4: Attempt creating manifest list on registry 192.168.17.187:5000/arch
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> endpoints: <span style="color:#f92672">[{</span>false https://192.168.17.187:5000 v2 false true 0xc420062a80<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>false http://192.168.17.187:5000 v2 false true 0xc420062a80<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>false https://192.168.17.187:5000 v1 false true 0xc420062c00<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>false http://192.168.17.187:5000 v1 false true 0xc420062c00<span style="color:#f92672">}]</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> repoName: arch/alpine                        
+INFO<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Retrieving digests of images...              
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> authConfig <span style="color:#66d9ef">for</span> 192.168.17.187:5000:          
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> endpoints: <span style="color:#f92672">[{</span>false https://192.168.17.187:5000 v2 false true 0xc420062f00<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>false http://192.168.17.187:5000 v2 false true 0xc420062f00<span style="color:#f92672">}]</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Trying to fetch image manifest of 192.168.17.187:5000/arch/ppc64le_alpine repository from https://192.168.17.187:5000 v2 
+INFO<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Image <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/ppc64le_alpine:latest&#34;</span> is digest sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c; size: <span style="color:#ae81ff">528</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest references of <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/ppc64le_alpine:latest&#34;</span> to blob mount requests 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest <span style="color:#e6db74">&#34;arch/ppc64le_alpine&#34;</span> -&gt; to be pushed to <span style="color:#e6db74">&#34;arch/alpine&#34;</span> as a manifest reference 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> authConfig <span style="color:#66d9ef">for</span> 192.168.17.187:5000:          
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> endpoints: <span style="color:#f92672">[{</span>false https://192.168.17.187:5000 v2 false true 0xc4204d0600<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>false http://192.168.17.187:5000 v2 false true 0xc4204d0600<span style="color:#f92672">}]</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Trying to fetch image manifest of 192.168.17.187:5000/arch/amd64_alpine repository from https://192.168.17.187:5000 v2 
+INFO<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Image <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/amd64_alpine:latest&#34;</span> is digest sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221; size: <span style="color:#ae81ff">528</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest references of <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/amd64_alpine:latest&#34;</span> to blob mount requests 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest <span style="color:#e6db74">&#34;arch/amd64_alpine&#34;</span> -&gt; to be pushed to <span style="color:#e6db74">&#34;arch/alpine&#34;</span> as a manifest reference 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> authConfig <span style="color:#66d9ef">for</span> 192.168.17.187:5000:          
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> endpoints: <span style="color:#f92672">[{</span>false https://192.168.17.187:5000 v2 false true 0xc420349080<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>false http://192.168.17.187:5000 v2 false true 0xc420349080<span style="color:#f92672">}]</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Trying to fetch image manifest of 192.168.17.187:5000/arch/s390x_alpine repository from https://192.168.17.187:5000 v2 
+INFO<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Image <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/s390x_alpine:latest&#34;</span> is digest sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de; size: <span style="color:#ae81ff">528</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest references of <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/s390x_alpine:latest&#34;</span> to blob mount requests 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest <span style="color:#e6db74">&#34;arch/s390x_alpine&#34;</span> -&gt; to be pushed to <span style="color:#e6db74">&#34;arch/alpine&#34;</span> as a manifest reference 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> authConfig <span style="color:#66d9ef">for</span> 192.168.17.187:5000:          
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> endpoints: <span style="color:#f92672">[{</span>false https://192.168.17.187:5000 v2 false true 0xc420063c80<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>false http://192.168.17.187:5000 v2 false true 0xc420063c80<span style="color:#f92672">}]</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Trying to fetch image manifest of 192.168.17.187:5000/arch/aarch64_alpine repository from https://192.168.17.187:5000 v2 
+INFO<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Image <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/aarch64_alpine:latest&#34;</span> is digest sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef; size: <span style="color:#ae81ff">528</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest references of <span style="color:#e6db74">&#34;192.168.17.187:5000/arch/aarch64_alpine:latest&#34;</span> to blob mount requests 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Adding manifest <span style="color:#e6db74">&#34;arch/aarch64_alpine&#34;</span> -&gt; to be pushed to <span style="color:#e6db74">&#34;arch/alpine&#34;</span> as a manifest reference 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Manifest list push url: https://192.168.17.187:5000/v2/arch/alpine/manifests/latest 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> mediaType of manifestList: application/vnd.docker.distribution.manifest.list.v2+json 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> authConfig <span style="color:#66d9ef">for</span> 192.168.17.187:5000:          
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:597c87082c114f1e78cf07db96e69306d6771ce8fe5f72cecb82a5c724c1bd9f succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:597c87082c114f1e78cf07db96e69306d6771ce8fe5f72cecb82a5c724c1bd9f&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:bc1c99f4ba60de0d3ca52dc6855483e24c91884e33df71f502bbff6eb909d9b9 succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:bc1c99f4ba60de0d3ca52dc6855483e24c91884e33df71f502bbff6eb909d9b9&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:a187dde48cd289ac374ad8539930628314bc581a481cdb41409c9289419ddb72 succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:a187dde48cd289ac374ad8539930628314bc581a481cdb41409c9289419ddb72&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:aad63a9339440e7c3e1fff2b988991b9bfb81280042fa7f39a5e327023056819 succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:aad63a9339440e7c3e1fff2b988991b9bfb81280042fa7f39a5e327023056819&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:452f204f05aae9837957231219a5d48e346220f0ac71874632109c1f8be49b9e succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:452f204f05aae9837957231219a5d48e346220f0ac71874632109c1f8be49b9e&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:ca1c6795bfb97df28a926fd646127ba4944b69beb1cea7b00d62787b8b3c0108 succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:ca1c6795bfb97df28a926fd646127ba4944b69beb1cea7b00d62787b8b3c0108&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:8e8812ba3b2d44c581d76fa0ad56a60e346c10cb1a778b10089d3d385502e0a4 succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:8e8812ba3b2d44c581d76fa0ad56a60e346c10cb1a778b10089d3d385502e0a4&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> Mount of blob sha256:bc1d962af60541fd028aaa6f21d62a662d718b3571577acf3fb65c04a61b1150 succeeded, location: <span style="color:#e6db74">&#34;https://192.168.17.187:5000/v2/arch/alpine/blobs/sha256:bc1d962af60541fd028aaa6f21d62a662d718b3571577acf3fb65c04a61b1150&#34;</span> 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> manifest reference push URL: https://192.168.17.187:5000/v2/arch/alpine/manifests/sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> referenced manifest <span style="color:#e6db74">&#34;arch/ppc64le_alpine&#34;</span> pushed; digest matches: sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> manifest reference push URL: https://192.168.17.187:5000/v2/arch/alpine/manifests/sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> referenced manifest <span style="color:#e6db74">&#34;arch/amd64_alpine&#34;</span> pushed; digest matches: sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> manifest reference push URL: https://192.168.17.187:5000/v2/arch/alpine/manifests/sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> referenced manifest <span style="color:#e6db74">&#34;arch/s390x_alpine&#34;</span> pushed; digest matches: sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> manifest reference push URL: https://192.168.17.187:5000/v2/arch/alpine/manifests/sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef 
+DEBU<span style="color:#f92672">[</span>0000<span style="color:#f92672">]</span> referenced manifest <span style="color:#e6db74">&#34;arch/aarch64_alpine&#34;</span> pushed; digest matches: sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef 
+Digest: sha256:1825baa9aeac87267c3132a89d87a10e8292d5e5042d25aded65923200c82bec <span style="color:#ae81ff">1388</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/registry# cat test-registry.yml
+image: __REGISTRY__/alpine:latest
+manifests: 
+  - 
+    image: __REGISTRY__/ppc64le_alpine:latest
+    platform: 
+      architecture: ppc64le
+      os: linux
+  - 
+    image: __REGISTRY__/amd64_alpine:latest
+    platform: 
+      architecture: amd64
+      os: linux
+  - 
+    image: __REGISTRY__/s390x_alpine:latest
+    platform: 
+      architecture: s390x
+      os: linux
+  - 
+    image: __REGISTRY__/aarch64_alpine:latest
+    platform: 
+      architecture: arm64
+      os: linux
+      variant: v8
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/home/ht061/桌面/registry# cat test-registry.sh
+<span style="color:#75715e">#!/bin/bash</span>
+
+<span style="color:#75715e">## This script will test creating a manifest list against a specified registry</span>
+<span style="color:#75715e">## that claims to support the Docker v2 distribution API and the v2.2 image</span>
+<span style="color:#75715e">## specification.</span>
+
+<span style="color:#75715e">## It expects `manifest-tool` to be in the $PATH as well as the docker client.</span>
+<span style="color:#75715e">## You must be authenticated via `docker login` to the registry provided or</span>
+<span style="color:#75715e">## whatever method that registry provides for inserting docker authentication.</span>
+
+<span style="color:#75715e">## It will pull 4 images from DockerHub (alpine for 4 architectures)</span>
+<span style="color:#75715e">## and tag them against the provided registry; push them as images to that</span>
+<span style="color:#75715e">## registry/repo and then use the `manifest-tool` to assemble them into a</span>
+<span style="color:#75715e">## manifest list and push using the V2 API and V2 features (like cross-repository</span>
+<span style="color:#75715e">## push and references to blobs already existing)</span>
+
+_REGISTRY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+_IMAGELIST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;s390x/alpine
+</span><span style="color:#e6db74">ppc64le/alpine
+</span><span style="color:#e6db74">aarch64/alpine
+</span><span style="color:#e6db74">alpine&#34;</span>
+
+<span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">{</span>
+	echo <span style="color:#e6db74">&#34;Please provide a registry URL + namespace/repo name as the first parameter&#34;</span>
+	exit <span style="color:#ae81ff">1</span>
+<span style="color:#f92672">}</span>
+
+echo <span style="color:#e6db74">&#34;Warning: some commands will fail if you are not authenticated to </span><span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+echo <span style="color:#e6db74">&#34;&gt;&gt; 1: Pulling required images from DockerHub&#34;</span>
+<span style="color:#66d9ef">for</span> i in $_IMAGELIST; <span style="color:#66d9ef">do</span>
+	docker pull <span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:latest
+<span style="color:#66d9ef">done</span>
+
+echo <span style="color:#e6db74">&#34;&gt;&gt; 2: Tagging and pushing images to registry </span><span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">for</span> i in $_IMAGELIST; <span style="color:#66d9ef">do</span>
+	target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i/<span style="color:#ae81ff">\/</span>/_<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+	<span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e"># special case for no arch prefix on amd64 (x86_64 Linux) images  </span>
+		target<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amd64_</span><span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+	<span style="color:#f92672">}</span>
+	echo docker tag <span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:latest <span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>target<span style="color:#e6db74">}</span>:latest
+	docker tag <span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:latest <span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>target<span style="color:#e6db74">}</span>:latest
+	docker push <span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>target<span style="color:#e6db74">}</span>:latest
+<span style="color:#66d9ef">done</span>
+
+echo <span style="color:#e6db74">&#34;&gt;&gt; 4: Attempt creating manifest list on registry </span><span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+sed s,__REGISTRY__,<span style="color:#e6db74">${</span>_REGISTRY<span style="color:#e6db74">}</span>, test-registry.yml &gt;test-registry.yaml
+manifest-tool --debug push from-spec test-registry.yaml
+
+
+</code></pre></div><h1 id="harbor-200-测试">harbor-2.0.0 测试</h1>
+<p>支持此功能：
+<img src="https://lurenjia528.github.io/img/docker-multiarch/harbor-timi.png" alt=""></p>
+<p>手动上传manifest:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@HT061:/opt/harbor-2.0.0/harbor/timi# docker images | grep alpine | grep ygt.h | grep 0.0.1 
+ygt.harbor.csse/timi/s390x_alpine            0.0.1                                      452f204f05aa        <span style="color:#ae81ff">8</span> weeks ago         5.65MB
+ygt.harbor.csse/timi/ppc64le_alpine          0.0.1                                      597c87082c11        <span style="color:#ae81ff">8</span> weeks ago         6.63MB
+ygt.harbor.csse/timi/amd64_alpine            0.0.1                                      a187dde48cd2        <span style="color:#ae81ff">8</span> weeks ago         5.6MB
+ygt.harbor.csse/timi/aarch64_alpine          0.0.1                                      8e8812ba3b2d        <span style="color:#ae81ff">3</span> years ago         3.83MB
+root@HT061:/opt/harbor-2.0.0/harbor/timi# 
+
+<span style="color:#75715e">#上传</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# docker push ygt.harbor.csse/timi/s390x_alpine:0.0.1
+The push refers to repository <span style="color:#f92672">[</span>ygt.harbor.csse/timi/s390x_alpine<span style="color:#f92672">]</span>
+b0f4d46f0129: Layer already exists 
+0.0.1: digest: sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de size: <span style="color:#ae81ff">528</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# docker push ygt.harbor.csse/timi/ppc64le_alpine:0.0.1
+The push refers to repository <span style="color:#f92672">[</span>ygt.harbor.csse/timi/ppc64le_alpine<span style="color:#f92672">]</span>
+d80722399fe1: Layer already exists 
+0.0.1: digest: sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c size: <span style="color:#ae81ff">528</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# docker push ygt.harbor.csse/timi/amd64_alpine:0.0.1
+The push refers to repository <span style="color:#f92672">[</span>ygt.harbor.csse/timi/amd64_alpine<span style="color:#f92672">]</span>
+beee9f30bc1f: Layer already exists 
+0.0.1: digest: sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221 size: <span style="color:#ae81ff">528</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# docker push ygt.harbor.csse/timi/aarch64_alpine:0.0.1
+The push refers to repository <span style="color:#f92672">[</span>ygt.harbor.csse/timi/aarch64_alpine<span style="color:#f92672">]</span>
+6b5c485d13f0: Layer already exists 
+0.0.1: digest: sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef size: <span style="color:#ae81ff">528</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# 
+
+<span style="color:#75715e">#创建manifest</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi#  docker manifest create ygt.harbor.csse/timi/alpine:0.0.1 ygt.harbor.csse/timi/s390x_alpine:0.0.1 ygt.harbor.csse/timi/ppc64le_alpine:0.0.1 ygt.harbor.csse/timi/amd64_alpine:0.0.1 ygt.harbor.csse/timi/aarch64_alpine:0.0.1
+Created manifest list ygt.harbor.csse/timi/alpine:0.0.1
+
+<span style="color:#75715e">#push manifest</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# docker manifest push   ygt.harbor.csse/timi/alpine:0.0.1
+Pushed ref ygt.harbor.csse/timi/alpine@sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef with digest: sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef
+Pushed ref ygt.harbor.csse/timi/alpine@sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221 with digest: sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221
+Pushed ref ygt.harbor.csse/timi/alpine@sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c with digest: sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c
+Pushed ref ygt.harbor.csse/timi/alpine@sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de with digest: sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de
+sha256:e959c02d88f4d4fceabba95f2136a1932d56d3ab438adc581403f8ae65655ea5
+root@HT061:/opt/harbor-2.0.0/harbor/timi# 
+
+<span style="color:#75715e">#查看manifest</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# docker manifest inspect  ygt.harbor.csse/timi/alpine:0.0.1
+<span style="color:#f92672">{</span>
+   <span style="color:#e6db74">&#34;schemaVersion&#34;</span>: 2,
+   <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.list.v2+json&#34;</span>,
+   <span style="color:#e6db74">&#34;manifests&#34;</span>: <span style="color:#f92672">[</span>
+      <span style="color:#f92672">{</span>
+         <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.v2+json&#34;</span>,
+         <span style="color:#e6db74">&#34;size&#34;</span>: 528,
+         <span style="color:#e6db74">&#34;digest&#34;</span>: <span style="color:#e6db74">&#34;sha256:6ace9a4351a3f02894c273cee7adc519318d6186f0d364fa37e418394576c5ef&#34;</span>,
+         <span style="color:#e6db74">&#34;platform&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;architecture&#34;</span>: <span style="color:#e6db74">&#34;arm64&#34;</span>,
+            <span style="color:#e6db74">&#34;os&#34;</span>: <span style="color:#e6db74">&#34;linux&#34;</span>
+         <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>,
+      <span style="color:#f92672">{</span>
+         <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.v2+json&#34;</span>,
+         <span style="color:#e6db74">&#34;size&#34;</span>: 528,
+         <span style="color:#e6db74">&#34;digest&#34;</span>: <span style="color:#e6db74">&#34;sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221&#34;</span>,
+         <span style="color:#e6db74">&#34;platform&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;architecture&#34;</span>: <span style="color:#e6db74">&#34;amd64&#34;</span>,
+            <span style="color:#e6db74">&#34;os&#34;</span>: <span style="color:#e6db74">&#34;linux&#34;</span>
+         <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>,
+      <span style="color:#f92672">{</span>
+         <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.v2+json&#34;</span>,
+         <span style="color:#e6db74">&#34;size&#34;</span>: 528,
+         <span style="color:#e6db74">&#34;digest&#34;</span>: <span style="color:#e6db74">&#34;sha256:04d04970e33c492fa411b508455d02a85978492db0403b8a714f365432c04f1c&#34;</span>,
+         <span style="color:#e6db74">&#34;platform&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;architecture&#34;</span>: <span style="color:#e6db74">&#34;ppc64le&#34;</span>,
+            <span style="color:#e6db74">&#34;os&#34;</span>: <span style="color:#e6db74">&#34;linux&#34;</span>
+         <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>,
+      <span style="color:#f92672">{</span>
+         <span style="color:#e6db74">&#34;mediaType&#34;</span>: <span style="color:#e6db74">&#34;application/vnd.docker.distribution.manifest.v2+json&#34;</span>,
+         <span style="color:#e6db74">&#34;size&#34;</span>: 528,
+         <span style="color:#e6db74">&#34;digest&#34;</span>: <span style="color:#e6db74">&#34;sha256:842db5c820b72e078691118de1791c9baa15ba09c87235e70990186ac0f825de&#34;</span>,
+         <span style="color:#e6db74">&#34;platform&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;architecture&#34;</span>: <span style="color:#e6db74">&#34;s390x&#34;</span>,
+            <span style="color:#e6db74">&#34;os&#34;</span>: <span style="color:#e6db74">&#34;linux&#34;</span>
+         <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>
+   <span style="color:#f92672">]</span>
+<span style="color:#f92672">}</span>
+root@HT061:/opt/harbor-2.0.0/harbor/timi# 
+</code></pre></div><p><a href="https://cloud.tencent.com/developer/article/1543689">参考</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/docker/">docker</a>
+
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/arm64/">arm64</a>
+
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/amd64/">amd64</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" data-tooltip="prometheus-operator源码分析">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/08/docker%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95/" data-tooltip="docker挂载文件与目录">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 lurenjia528. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/10/prometheus-operator%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" data-tooltip="prometheus-operator源码分析">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/08/docker%E6%8C%82%E8%BD%BD%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95/" data-tooltip="docker挂载文件与目录">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://lurenjia528.github.io/ll.jpeg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">lurenjia528</h4>
+    
+      <div id="about-card-bio">后端开发</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Cloud
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Beijing
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://lurenjia528.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://lurenjia528.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/10\/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F\/';
+          
+            this.page.identifier = '\/2020\/10\/%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%9E%B6%E6%9E%84%E9%95%9C%E5%83%8F\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'valine';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

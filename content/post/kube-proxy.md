@@ -1,6 +1,6 @@
 ---
 title: kube-proxy启用ipvs
-slug: chinese-test
+#slug: chinese-test
 date: 2019-06-26
 categories:
 - k8s
