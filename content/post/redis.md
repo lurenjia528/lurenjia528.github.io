@@ -3,8 +3,8 @@ title: redis启动错误
 #slug: chinese-test
 date: 2020-07-24
 categories:
-- redis
 - ubuntu
+- redis
 tags:
 - redis
 thumbnailImagePosition: left

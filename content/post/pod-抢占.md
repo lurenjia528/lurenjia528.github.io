@@ -3,7 +3,6 @@ title: pod-抢占
 #slug: chinese-test
 date: 2020-05-21
 categories:
-- linux
 - ubuntu
 - k8s
 - pod

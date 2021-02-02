@@ -80,6 +80,15 @@
     </item>
     
     <item>
+      <title>ipvs</title>
+      <link>https://lurenjia528.github.io/2020/01/ipvs/</link>
+      <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2020/01/ipvs/</guid>
+      <description>&lt;p&gt;ipvs系统参数调整&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>envoy测试</title>
       <link>https://lurenjia528.github.io/2019/12/envoy%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>

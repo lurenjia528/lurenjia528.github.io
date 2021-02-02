@@ -3,8 +3,8 @@ title: dnsServer-bind9
 #slug: chinese-test
 date: 2018-11-06
 categories:
-- bind9
 - ubuntu
+- bind9
 tags:
 - bind9
 thumbnailImagePosition: left

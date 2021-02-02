@@ -3,7 +3,7 @@ title: ipvs
 #slug: chinese-test
 date: 2020-01-21
 categories:
-- linux
+- ubuntu
 - ipvs
 tags:
 - ipvs

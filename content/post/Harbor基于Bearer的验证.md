@@ -3,8 +3,8 @@ title: harbor基于Bearer的验证
 #slug: chinese-test
 date: 2020-05-28
 categories:
-- harbor
 - ubuntu
+- harbor
 tags:
 - harbor
 thumbnailImagePosition: left
