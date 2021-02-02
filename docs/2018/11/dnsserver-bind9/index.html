@@ -8,35 +8,37 @@
 <meta name="generator" content="Hugo 0.80.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="lurenjia528">
 <meta name="keywords" content="">
-<meta name="description" content="">
+<meta name="description" content="dnsServer bind9">
 
 
-<meta property="og:description" content="">
+<meta property="og:description" content="dnsServer bind9">
 <meta property="og:type" content="article">
-<meta property="og:title" content="系统模块">
-<meta name="twitter:title" content="系统模块">
-<meta property="og:url" content="https://lurenjia528.github.io/2019/06/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97/">
-<meta property="twitter:url" content="https://lurenjia528.github.io/2019/06/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97/">
+<meta property="og:title" content="dnsServer-bind9">
+<meta name="twitter:title" content="dnsServer-bind9">
+<meta property="og:url" content="https://lurenjia528.github.io/2018/11/dnsserver-bind9/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2018/11/dnsserver-bind9/">
 <meta property="og:site_name" content="lurenjia528">
-<meta property="og:description" content="">
-<meta name="twitter:description" content="">
+<meta property="og:description" content="dnsServer bind9">
+<meta name="twitter:description" content="dnsServer bind9">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-06-26T00:00:00">
+    <meta property="article:published_time" content="2018-11-06T00:00:00">
   
   
-    <meta property="article:modified_time" content="2019-06-26T00:00:00">
+    <meta property="article:modified_time" content="2018-11-06T00:00:00">
   
-  
-  
-    
-      <meta property="article:section" content="linux">
-    
   
   
     
-      <meta property="article:tag" content="modules">
+      <meta property="article:section" content="bind9">
+    
+      <meta property="article:section" content="ubuntu">
+    
+  
+  
+    
+      <meta property="article:tag" content="bind9">
     
   
 
@@ -49,8 +51,8 @@
 
 
 
-  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg">
-  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg">
+  <meta property="og:image" content="https://lurenjia528.github.io/img/dns.jpg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/dns.jpg">
 
 
 
@@ -60,14 +62,14 @@
   <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
 
 
-    <title>系统模块</title>
+    <title>dnsServer-bind9</title>
 
     <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://lurenjia528.github.io/2019/06/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97/">
+    <link rel="canonical" href="https://lurenjia528.github.io/2018/11/dnsserver-bind9/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -227,15 +229,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      系统模块
+      dnsServer-bind9
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-06-26T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-11-06T00:00:00Z">
         
-  六月 26, 2019
+  十一月 6, 2018
 
       </time>
     
@@ -244,7 +246,9 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://lurenjia528.github.io/categories/linux">linux</a>
+      <a class="category-link" href="https://lurenjia528.github.io/categories/bind9">bind9</a>, 
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/ubuntu">ubuntu</a>
     
   
 
@@ -254,13 +258,135 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nf_conntrack_max文件不存在
-检查系统是否存在conntrack模块
-find /lib/modules/<span style="color:#e6db74">`</span>uname  -r<span style="color:#e6db74">`</span> -name *conntrack*
-系统加载此模块
-modprobe nf_conntrack
-查看
-lsmod
+              <p>dnsServer bind9</p>
+<h1 id="dnsserver">dnsServer</h1>
+<p>bind9</p>
+<p>ubuntu下</p>
+<p>安装bind9</p>
+<pre><code class="language-bsah" data-lang="bsah">apt-get install bind9  
+</code></pre><p>修改<code>/etc/bind/named.conf.options</code>文件</p>
+<pre><code class="language-conf" data-lang="conf">acl goodclients {
+        192.168.200.0/24;
+        localhost;
+        localhost;
+};
+
+options {
+        directory &quot;/var/cache/bind&quot;;
+
+        // If there is a firewall between you and nameservers you want
+        // to talk to, you may need to fix the firewall to allow multiple
+        // ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+
+        // If your ISP provided one or more IP addresses for stable
+        // nameservers, you probably want to use them as forwarders.
+        // Uncomment the following block, and insert the addresses replacing
+        // the all-0's placeholder.
+
+        // forwarders {
+        //      8.8.8.8;
+        // };
+
+        //========================================================================
+        // If BIND logs error messages about the root key being expired,
+        // you will need to update your keys.  See https://www.isc.org/bind-keys
+        //========================================================================
+        dnssec-validation auto;
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+
+        listen-on {192.168.200.222;};
+
+        recursion yes;
+        allow-query { goodclients; };
+        allow-transfer { none; };
+
+        forwarders {
+                223.5.5.5;
+                223.6.6.6;
+        };
+        forward only;
+};
+</code></pre><p>配置<code>named.conf.local</code>文件</p>
+<pre><code class="language-conf" data-lang="conf">//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include &quot;/etc/bind/zones.rfc1918&quot;;
+
+//domain-&gt;ip
+zone &quot;local.com&quot; in {
+        type master;
+        file &quot;/var/cache/bind/db.local.com&quot;;
+};
+
+//ip-&gt;domain
+zone &quot;200.168.192.in-addr.arpa&quot; in {
+        type master;
+        file &quot;/var/cache/bind/db.200.168.192&quot;;
+};
+</code></pre><p>配置正向记录<code>/var/cache/bind/db.local.com</code></p>
+<pre><code class="language-conf" data-lang="conf">$TTL    604800
+@       IN      SOA     local.com.      root.local.com. (
+                        2               ; Serial
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        604000)         ; Negative Cache TTL
+;
+; name servers
+@       IN      NS      ns.local.com.
+@       IN      A       192.168.200.222
+;ns records
+ns      IN      A       192.168.200.222
+;host records
+www     IN      A       192.168.200.110
+api     IN      A       192.168.200.100
+ygt     IN      A       192.168.200.111
+</code></pre><p>配置反向记录<code>/var/cache/bind/db.200.168.192</code>文件</p>
+<p>PTR表示ip地址对应的域名，本例中：192.168.200.66对应三个域名</p>
+<pre><code class="language-conf" data-lang="conf">$TTL    604800
+@       IN      SOA     local.com.      root.local.com. (
+                        2               ; Serial Number
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        86400 );        ; Minimum
+
+@       IN      NS      local.com.
+
+66      IN      PTR     www.local.com.
+66      IN      PTR     api.local.com.
+66      IN      PTR     ygt.local.com.
+</code></pre><p>重启bind9</p>
+<p><code>systemctl restart bind9</code></p>
+<p>在路由器里设置首要DNS 为 192.168.200.222(同一内网下，配置<code>/etc/resolv.conf</code> 添加 <code>nameserver 192.168.200.222</code> 即可)，这样我们就可以在同一个内网下访问：www.local.com 就会指向到 192.168.200.110，访问：api.local.com 就会指向到 192.168.200.100</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@ygt:/var/cache/bind# nslookup www.local.com
+Server:         192.168.200.222
+Address:        192.168.200.222#53
+
+Name:   www.local.com
+Address: 192.168.200.110
+
+root@ygt:/var/cache/bind# nslookup api.local.com
+Server:         192.168.200.222
+Address:        192.168.200.222#53
+
+Name:   api.local.com
+Address: 192.168.200.100
+
+root@ygt:/var/cache/bind# nslookup  192.168.200.66
+Server:         192.168.200.222
+Address:        192.168.200.222#53
+
+66.200.168.192.in-addr.arpa     name <span style="color:#f92672">=</span> ygt.local.com.
+66.200.168.192.in-addr.arpa     name <span style="color:#f92672">=</span> api.local.com.
+66.200.168.192.in-addr.arpa     name <span style="color:#f92672">=</span> www.local.com.
+
+root@ygt:/var/cache/bind#
 </code></pre></div>
               
             </div>
@@ -273,7 +399,7 @@ lsmod
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/modules/">modules</a>
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/bind9/">bind9</a>
 
                   </div>
                 
@@ -286,7 +412,7 @@ lsmod
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2019/06/%E6%B8%85%E7%90%86docker%E9%95%9C%E5%83%8F/%E5%AE%B9%E5%99%A8/" data-tooltip="清理docker镜像/容器">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2019/06/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97/" data-tooltip="系统模块">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -294,7 +420,7 @@ lsmod
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2018/11/dnsserver-bind9/" data-tooltip="dnsServer-bind9">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2015/06/welcome-to-tranquilpeak-0.4.8-beta/" data-tooltip="Welcome to Tranquilpeak 0.4.8-BETA">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -354,7 +480,7 @@ lsmod
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2019/06/%E6%B8%85%E7%90%86docker%E9%95%9C%E5%83%8F/%E5%AE%B9%E5%99%A8/" data-tooltip="清理docker镜像/容器">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2019/06/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97/" data-tooltip="系统模块">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -362,7 +488,7 @@ lsmod
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2018/11/dnsserver-bind9/" data-tooltip="dnsServer-bind9">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2015/06/welcome-to-tranquilpeak-0.4.8-beta/" data-tooltip="Welcome to Tranquilpeak 0.4.8-BETA">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -490,9 +616,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/lurenjia528.github.io\/2019\/06\/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97\/';
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2018\/11\/dnsserver-bind9\/';
           
-            this.page.identifier = '\/2019\/06\/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97\/'
+            this.page.identifier = '\/2018\/11\/dnsserver-bind9\/'
           
         };
         (function() {

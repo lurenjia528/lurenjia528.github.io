@@ -97,5 +97,14 @@
       <description>&lt;p&gt;清理docker镜像/容器&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>dnsServer-bind9</title>
+      <link>https://lurenjia528.github.io/2018/11/dnsserver-bind9/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2018/11/dnsserver-bind9/</guid>
+      <description>&lt;p&gt;dnsServer bind9&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
