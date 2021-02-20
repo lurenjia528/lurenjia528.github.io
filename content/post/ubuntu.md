@@ -23,3 +23,20 @@ https://blog.csdn.net/unicorn_mitnick/article/details/85236456
 # ulimit 修改
 https://blog.csdn.net/zhulx_sz/article/details/88309367
 
+# 网络
+
+查看不同状态的连接数数量
+
+`netstat -an | awk '/^tcp/ {++y[$NF]} END {for(w in y) print w, y[w]}'`
+
+查看每个ip跟服务器建立的连接数
+
+`netstat -nat|grep "tcp"|awk ' {print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn`
+
+查看每个ip建立的ESTABLISHED/TIME_OUT状态的连接数
+
+`netstat -nat|grep ESTABLISHED|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn`
+
+netstat监控大量ESTABLISHED连接与Time_Wait连接
+
+`netstat -n | awk '/^tcp/ {++y[$NF]} END {for(w in y) print w, y[w]}'`

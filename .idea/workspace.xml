@@ -21,11 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4dd7c8f9-0d9c-42ba-8b80-822490ca7b2c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/Harbor基于Bearer的验证.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/Harbor基于Bearer的验证.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/dnsServer.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/dnsServer.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/ipvs.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/ipvs.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/pod-抢占.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/pod-抢占.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/redis.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/post/ubuntu.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/ubuntu.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
