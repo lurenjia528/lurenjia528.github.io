@@ -88,8 +88,9 @@ canonifyurls = true
 [[menu.links]]
   weight = 2
   identifier = "docker"
-  name = "Docker"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-docker\"></i>"
+  name = "Dockerhub"
+#  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-docker\"></i>"
+  pre = "<img class=\"sidebar-button-icon fa fa-lg \" height=\"20px\" width=\"20px\" src=\"https://secure.gravatar.com/avatar/7510e100f7ebeca4a0b8c3c617349295.jpg?s=80&r=g&d=mm\"></img>"
   url = "https://hub.docker.com/u/lurenjia"
 
 [[menu.misc]]
