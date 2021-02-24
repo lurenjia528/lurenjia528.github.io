@@ -1,5 +1,5 @@
 ---
-title: ubuntu登录页面
+title: ubuntu
 #slug: chinese-test
 date: 2020-07-24
 categories:
@@ -37,6 +37,6 @@ https://blog.csdn.net/zhulx_sz/article/details/88309367
 
 `netstat -nat|grep ESTABLISHED|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn`
 
-netstat监控大量ESTABLISHED连接与Time_Wait连接
+网卡多队列
 
-`netstat -n | awk '/^tcp/ {++y[$NF]} END {for(w in y) print w, y[w]}'`
+https://www.cnblogs.com/qinyujie/p/11127660.html
