@@ -15,6 +15,9 @@ thumbnailImage: //d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jp
 nodeport访问失败
 <!--more-->
 
+# 可能由于tcp_tw_recycle问题
+https://blog.csdn.net/qqhappy8/article/details/108897048
+
 # 通常由于iptables问题和selinux问题
 解决方式
 ```bash
@@ -25,8 +28,9 @@ service docker restart
 iptables -P FORWARD ACCEPT
 ```
 官方原文：
-Disabling SELinux by running setenforce 0 is required to allow containers to access the host filesystem, which is required by pod networks for example. You have to do this until SELinux support is improved in the kubelet.
+`Disabling SELinux by running setenforce 0 is required to allow containers to access the host filesystem, which is required by pod networks for example. You have to do this until SELinux support is improved in the kubelet.`
 翻译就是
+
 通过setenforce 0 关闭SELinux是必须的，这样容器才可以访问主机的文件系统，例如pod的网络操作就需要访问主机文件系统。直到kubelet支持SELinux之前你都需要关闭SELinux。
 
 iptables --flush和iptables -tnat --flush是清空iptables的规则，然后重启docker后会重新加入kubernetes的iptables规则，iptables -P FORWARD ACCEPT则允许转发

@@ -265,6 +265,8 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>nodeport访问失败</p>
+<h1 id="可能由于tcp_tw_recycle问题">可能由于tcp_tw_recycle问题</h1>
+<p><a href="https://blog.csdn.net/qqhappy8/article/details/108897048">https://blog.csdn.net/qqhappy8/article/details/108897048</a></p>
 <h1 id="通常由于iptables问题和selinux问题">通常由于iptables问题和selinux问题</h1>
 <p>解决方式</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">setenforce <span style="color:#ae81ff">0</span>
@@ -273,9 +275,9 @@ iptables -tnat --flush
 service docker restart
 iptables -P FORWARD ACCEPT
 </code></pre></div><p>官方原文：
-Disabling SELinux by running setenforce 0 is required to allow containers to access the host filesystem, which is required by pod networks for example. You have to do this until SELinux support is improved in the kubelet.
-翻译就是
-通过setenforce 0 关闭SELinux是必须的，这样容器才可以访问主机的文件系统，例如pod的网络操作就需要访问主机文件系统。直到kubelet支持SELinux之前你都需要关闭SELinux。</p>
+<code>Disabling SELinux by running setenforce 0 is required to allow containers to access the host filesystem, which is required by pod networks for example. You have to do this until SELinux support is improved in the kubelet.</code>
+翻译就是</p>
+<p>通过setenforce 0 关闭SELinux是必须的，这样容器才可以访问主机的文件系统，例如pod的网络操作就需要访问主机文件系统。直到kubelet支持SELinux之前你都需要关闭SELinux。</p>
 <p>iptables &ndash;flush和iptables -tnat &ndash;flush是清空iptables的规则，然后重启docker后会重新加入kubernetes的iptables规则，iptables -P FORWARD ACCEPT则允许转发</p>
 <h1 id="设置service的nodeport以后外部无法访问对应的端口的问题">设置service的nodeport以后外部无法访问对应的端口的问题</h1>
 <p>关于Service 设置为NodePort 模式后导致外部无法访问对应的端口问题，查看下node节点上已经出现了30002端口的监听，确保服务器外部安全组等限制已经放行该端口，按照网上搜到的教程配置基本没看到要配置iptables相关的问题。
