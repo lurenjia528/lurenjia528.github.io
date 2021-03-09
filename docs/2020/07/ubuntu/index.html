@@ -271,6 +271,8 @@
 <p><code>netstat -nat|grep ESTABLISHED|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn</code></p>
 <p>网卡多队列</p>
 <p><a href="https://www.cnblogs.com/qinyujie/p/11127660.html">https://www.cnblogs.com/qinyujie/p/11127660.html</a></p>
+<p>查找僵尸进程</p>
+<p><code>ps -A -ostat,ppid,pid,cmd |grep -e '^[Zz]'</code></p>
               
             </div>
           </div>

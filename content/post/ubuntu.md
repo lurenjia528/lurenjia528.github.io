@@ -40,3 +40,7 @@ https://blog.csdn.net/zhulx_sz/article/details/88309367
 网卡多队列
 
 https://www.cnblogs.com/qinyujie/p/11127660.html
+
+查找僵尸进程
+
+`ps -A -ostat,ppid,pid,cmd |grep -e '^[Zz]'`
