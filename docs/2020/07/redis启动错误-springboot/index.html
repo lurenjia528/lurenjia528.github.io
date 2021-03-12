@@ -13,10 +13,10 @@
 
 <meta property="og:description" content="redis启动错误">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis启动错误">
-<meta name="twitter:title" content="redis启动错误">
-<meta property="og:url" content="https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF/">
-<meta property="twitter:url" content="https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF/">
+<meta property="og:title" content="redis启动错误&#43;springboot">
+<meta name="twitter:title" content="redis启动错误&#43;springboot">
+<meta property="og:url" content="https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF-springboot/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF-springboot/">
 <meta property="og:site_name" content="lurenjia528">
 <meta property="og:description" content="redis启动错误">
 <meta name="twitter:description" content="redis启动错误">
@@ -62,14 +62,14 @@
   <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
 
 
-    <title>redis启动错误</title>
+    <title>redis启动错误&#43;springboot</title>
 
     <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF/">
+    <link rel="canonical" href="https://lurenjia528.github.io/2020/07/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF-springboot/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -229,7 +229,7 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      redis启动错误
+      redis启动错误&#43;springboot
     </h1>
   
   
@@ -264,6 +264,33 @@
 &lt;jemalloc&gt;: Unsupported system page size
 </code></pre></div><p>可能是系统pagesize问题</p>
 <p>查看<code>getconf PAGESIZE</code></p>
+<h1 id="springboot-k8s">springboot k8s</h1>
+<p>redis集群以pod方式部署在k8s集群时，
+springboot默认以lettuce连接池连接redis集群，
+当redis集群重启或者故障转移后，lettuce仍然使用原来缓存的pod ip 连接redis集群，导致连接超时失败．
+解决办法：
+开启动态刷新集群拓扑</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">redis</span>:
+<span style="color:#75715e">#    password:</span>
+    <span style="color:#f92672">timeout</span>: <span style="color:#ae81ff">3000ms</span>
+<span style="color:#75715e">#    host: 192.168.17.154</span>
+    <span style="color:#f92672">cluster</span>:
+      <span style="color:#f92672">nodes</span>:
+        - <span style="color:#ae81ff">redis-cluster.redis.svc.cluster.local:6379</span>
+      <span style="color:#f92672">max-redirects</span>: <span style="color:#ae81ff">3</span>
+    <span style="color:#f92672">lettuce</span>:
+      <span style="color:#f92672">pool</span>:
+        <span style="color:#f92672">max-active</span>: -<span style="color:#ae81ff">1</span>
+        <span style="color:#f92672">max-wait</span>: -<span style="color:#ae81ff">1</span>
+        <span style="color:#f92672">max-idle</span>: <span style="color:#ae81ff">10</span>
+        <span style="color:#f92672">min-idle</span>: <span style="color:#ae81ff">5</span>
+      <span style="color:#f92672">cluster</span>:
+        <span style="color:#f92672">refresh</span>:
+          <span style="color:#f92672">dynamic-refresh-sources</span>: <span style="color:#66d9ef">true</span>
+          <span style="color:#f92672">adaptive</span>: <span style="color:#66d9ef">true</span>
+          <span style="color:#f92672">period</span>: <span style="color:#ae81ff">5s</span>
+</code></pre></div>
               
             </div>
           </div>
@@ -492,9 +519,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/07\/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF\/';
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/07\/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF-springboot\/';
           
-            this.page.identifier = '\/2020\/07\/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF\/'
+            this.page.identifier = '\/2020\/07\/redis%E5%90%AF%E5%8A%A8%E9%94%99%E8%AF%AF-springboot\/'
           
         };
         (function() {
