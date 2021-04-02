@@ -6,7 +6,16 @@
     <description>Recent content in linux on lurenjia528</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>zookeeper日志查看</title>
+      <link>https://lurenjia528.github.io/2021/04/zookeeper%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B/</link>
+      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2021/04/zookeeper%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>vim回车换行</title>
       <link>https://lurenjia528.github.io/2021/01/vim%E5%9B%9E%E8%BD%A6%E6%8D%A2%E8%A1%8C/</link>
