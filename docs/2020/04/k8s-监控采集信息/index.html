@@ -8,37 +8,43 @@
 <meta name="generator" content="Hugo 0.80.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="lurenjia528">
 <meta name="keywords" content="">
-<meta name="description" content="java等应用无法在6666端口启动，是因为&hellip;">
+<meta name="description" content="">
 
 
-<meta property="og:description" content="java等应用无法在6666端口启动，是因为&hellip;">
+<meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器端口">
-<meta name="twitter:title" content="浏览器端口">
-<meta property="og:url" content="https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/">
-<meta property="twitter:url" content="https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/">
+<meta property="og:title" content="k8s 监控采集信息">
+<meta name="twitter:title" content="k8s 监控采集信息">
+<meta property="og:url" content="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/">
 <meta property="og:site_name" content="lurenjia528">
-<meta property="og:description" content="java等应用无法在6666端口启动，是因为&hellip;">
-<meta name="twitter:description" content="java等应用无法在6666端口启动，是因为&hellip;">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2020-04-24T00:00:00">
+    <meta property="article:published_time" content="2020-04-10T00:00:00">
   
   
-    <meta property="article:modified_time" content="2020-04-24T00:00:00">
+    <meta property="article:modified_time" content="2020-04-10T00:00:00">
   
-  
-  
-    
-      <meta property="article:section" content="browser">
-    
-      <meta property="article:section" content="port">
-    
   
   
     
-      <meta property="article:tag" content="browser">
+      <meta property="article:section" content="k8s">
+    
+      <meta property="article:section" content="prometheus">
+    
+      <meta property="article:section" content="hpa">
+    
+      <meta property="article:section" content="metrics-server">
+    
+  
+  
+    
+      <meta property="article:tag" content="prometheus">
+    
+      <meta property="article:tag" content="hpa">
     
   
 
@@ -62,14 +68,14 @@
   <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
 
 
-    <title>浏览器端口</title>
+    <title>k8s 监控采集信息</title>
 
     <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/">
+    <link rel="canonical" href="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -229,15 +235,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      浏览器端口
+      k8s 监控采集信息
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-04-24T00:00:00Z">
+      <time itemprop="datePublished" datetime="2020-04-10T00:00:00Z">
         
-  四月 24, 2020
+  四月 10, 2020
 
       </time>
     
@@ -246,9 +252,13 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://lurenjia528.github.io/categories/browser">browser</a>, 
+      <a class="category-link" href="https://lurenjia528.github.io/categories/k8s">k8s</a>, 
     
-      <a class="category-link" href="https://lurenjia528.github.io/categories/port">port</a>
+      <a class="category-link" href="https://lurenjia528.github.io/categories/prometheus">prometheus</a>, 
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/hpa">hpa</a>, 
+    
+      <a class="category-link" href="https://lurenjia528.github.io/categories/metrics-server">metrics-server</a>
     
   
 
@@ -258,274 +268,30 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>java等应用无法在6666端口启动，是因为&hellip;</p>
-<h1 id="非安全端口列表">非安全端口列表</h1>
-<table>
-<thead>
-<tr>
-<th>port</th>
-<th>process</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>tcpmux</td>
-</tr>
-<tr>
-<td>7</td>
-<td>echo</td>
-</tr>
-<tr>
-<td>9</td>
-<td>discard</td>
-</tr>
-<tr>
-<td>11</td>
-<td>systat</td>
-</tr>
-<tr>
-<td>13</td>
-<td>daytime</td>
-</tr>
-<tr>
-<td>15</td>
-<td>netstat</td>
-</tr>
-<tr>
-<td>17</td>
-<td>qotd</td>
-</tr>
-<tr>
-<td>19</td>
-<td>chargen</td>
-</tr>
-<tr>
-<td>20</td>
-<td>ftp data</td>
-</tr>
-<tr>
-<td>21</td>
-<td>ftp access</td>
-</tr>
-<tr>
-<td>22</td>
-<td>ssh</td>
-</tr>
-<tr>
-<td>23</td>
-<td>telnet</td>
-</tr>
-<tr>
-<td>25</td>
-<td>smtp</td>
-</tr>
-<tr>
-<td>37</td>
-<td>time</td>
-</tr>
-<tr>
-<td>42</td>
-<td>name</td>
-</tr>
-<tr>
-<td>43</td>
-<td>nicname</td>
-</tr>
-<tr>
-<td>53</td>
-<td>domain</td>
-</tr>
-<tr>
-<td>77</td>
-<td>priv-rjs</td>
-</tr>
-<tr>
-<td>79</td>
-<td>finger</td>
-</tr>
-<tr>
-<td>87</td>
-<td>ttylink</td>
-</tr>
-<tr>
-<td>95</td>
-<td>supdup</td>
-</tr>
-<tr>
-<td>101</td>
-<td>hostriame</td>
-</tr>
-<tr>
-<td>102</td>
-<td>iso-tsap</td>
-</tr>
-<tr>
-<td>103</td>
-<td>gppitnp</td>
-</tr>
-<tr>
-<td>104</td>
-<td>acr-nema</td>
-</tr>
-<tr>
-<td>109</td>
-<td>pop2</td>
-</tr>
-<tr>
-<td>110</td>
-<td>pop3</td>
-</tr>
-<tr>
-<td>111</td>
-<td>sunrpc</td>
-</tr>
-<tr>
-<td>113</td>
-<td>auth</td>
-</tr>
-<tr>
-<td>115</td>
-<td>sftp</td>
-</tr>
-<tr>
-<td>117</td>
-<td>uucp-path</td>
-</tr>
-<tr>
-<td>119</td>
-<td>nntp</td>
-</tr>
-<tr>
-<td>123</td>
-<td>NTP</td>
-</tr>
-<tr>
-<td>135</td>
-<td>loc-srv /epmap</td>
-</tr>
-<tr>
-<td>139</td>
-<td>netbios</td>
-</tr>
-<tr>
-<td>143</td>
-<td>imap2</td>
-</tr>
-<tr>
-<td>179</td>
-<td>BGP</td>
-</tr>
-<tr>
-<td>389</td>
-<td>ldap</td>
-</tr>
-<tr>
-<td>465</td>
-<td>smtp+ssl</td>
-</tr>
-<tr>
-<td>512</td>
-<td>print / exec</td>
-</tr>
-<tr>
-<td>513</td>
-<td>login</td>
-</tr>
-<tr>
-<td>514</td>
-<td>shell</td>
-</tr>
-<tr>
-<td>515</td>
-<td>printer</td>
-</tr>
-<tr>
-<td>526</td>
-<td>tempo</td>
-</tr>
-<tr>
-<td>530</td>
-<td>courier</td>
-</tr>
-<tr>
-<td>531</td>
-<td>chat</td>
-</tr>
-<tr>
-<td>532</td>
-<td>netnews</td>
-</tr>
-<tr>
-<td>540</td>
-<td>uucp</td>
-</tr>
-<tr>
-<td>556</td>
-<td>remotefs</td>
-</tr>
-<tr>
-<td>563</td>
-<td>nntp+ssl</td>
-</tr>
-<tr>
-<td>587</td>
-<td>stmp?</td>
-</tr>
-<tr>
-<td>601</td>
-<td>??</td>
-</tr>
-<tr>
-<td>636</td>
-<td>ldap+ssl</td>
-</tr>
-<tr>
-<td>993</td>
-<td>ldap+ssl</td>
-</tr>
-<tr>
-<td>995</td>
-<td>pop3+ssl</td>
-</tr>
-<tr>
-<td>2049</td>
-<td>nfs</td>
-</tr>
-<tr>
-<td>3659</td>
-<td>apple-sasl / PasswordServer</td>
-</tr>
-<tr>
-<td>4045</td>
-<td>lockd</td>
-</tr>
-<tr>
-<td>6000</td>
-<td>X11</td>
-</tr>
-<tr>
-<td>6665</td>
-<td>Alternate IRC [Apple addition]</td>
-</tr>
-<tr>
-<td>6666</td>
-<td>Alternate IRC [Apple addition]</td>
-</tr>
-<tr>
-<td>6667</td>
-<td>Standard IRC [Apple addition]</td>
-</tr>
-<tr>
-<td>6668</td>
-<td>Alternate IRC [Apple addition]</td>
-</tr>
-<tr>
-<td>6669</td>
-<td>Alternate IRC [Apple addition]</td>
-</tr>
-</tbody>
-</table>
+              <p>自定义指标：</p>
+<p><a href="https://github.com/stefanprodan/k8s-prom-hpa/blob/master/README.md">参考</a></p>
+<p>metrics-server:</p>
+<p>k8s 1.18.0 安装 metrics-server 0.3.6 相关注意事项：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kube-apiserver.yaml 添加参数
+      - --enable-aggregator-routing<span style="color:#f92672">=</span>true
+      - --requestheader-allowed-names<span style="color:#f92672">=</span>aggregator,front-proxy-client
+
+
+
+metrics-server 更新镜像，修改参数
+      containers:
+      - name: metrics-server
+        image: kylincloud2.hub/kube-system/metrics_server:v0.3.6
+        command:
+          - /metrics-server
+          - --metric-resolution<span style="color:#f92672">=</span>5s
+          - --kubelet-preferred-address-types<span style="color:#f92672">=</span>InternalIP
+          - --kubelet-insecure-tls
+            <span style="color:#75715e">#- --requestheader-client-ca-file=/opt/front-proxy-ca.pem  #注释此行</span>
+        imagePullPolicy: IfNotPresent
+
+注释所有挂载
+</code></pre></div>
               
             </div>
           </div>
@@ -537,7 +303,9 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/browser/">browser</a>
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/prometheus/">prometheus</a>
+
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/hpa/">hpa</a>
 
                   </div>
                 
@@ -550,7 +318,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/05/git%E7%9B%B8%E5%85%B3/" data-tooltip="git相关">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/" data-tooltip="浏览器端口">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -558,7 +326,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/" data-tooltip="k8s 监控采集信息">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/" data-tooltip="cobra与glog冲突">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -618,7 +386,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/05/git%E7%9B%B8%E5%85%B3/" data-tooltip="git相关">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/" data-tooltip="浏览器端口">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -626,7 +394,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/" data-tooltip="k8s 监控采集信息">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/" data-tooltip="cobra与glog冲突">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -754,9 +522,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/04\/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3\/';
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/04\/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF\/';
           
-            this.page.identifier = '\/2020\/04\/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3\/'
+            this.page.identifier = '\/2020\/04\/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF\/'
           
         };
         (function() {
