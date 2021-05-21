@@ -6,7 +6,16 @@
     <description>Recent content on lurenjia528</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>metrics-server引发的悲惨经历</title>
+      <link>https://lurenjia528.github.io/2021/05/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86/</link>
+      <pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2021/05/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>zookeeper日志查看</title>
       <link>https://lurenjia528.github.io/2021/04/zookeeper%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B/</link>
@@ -149,15 +158,6 @@
       
       <guid>https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/</guid>
       <description>&lt;p&gt;java等应用无法在6666端口启动，是因为&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>k8s 监控采集信息</title>
-      <link>https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/</link>
-      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/</guid>
-      <description></description>
     </item>
     
     <item>

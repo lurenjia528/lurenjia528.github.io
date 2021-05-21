@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dd7c8f9-0d9c-42ba-8b80-822490ca7b2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/content/post/k8s-监控采集信息.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/post/自定义指标hpa.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/post/k8s-监控采集信息.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/post/metrics-server引发的悲惨经历.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

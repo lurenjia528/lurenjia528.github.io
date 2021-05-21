@@ -13,20 +13,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="k8s 监控采集信息">
-<meta name="twitter:title" content="k8s 监控采集信息">
-<meta property="og:url" content="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/">
-<meta property="twitter:url" content="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/">
+<meta property="og:title" content="metrics-server引发的悲惨经历">
+<meta name="twitter:title" content="metrics-server引发的悲惨经历">
+<meta property="og:url" content="https://lurenjia528.github.io/2021/05/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2021/05/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86/">
 <meta property="og:site_name" content="lurenjia528">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2020-04-10T00:00:00">
+    <meta property="article:published_time" content="2021-05-21T00:00:00">
   
   
-    <meta property="article:modified_time" content="2020-04-10T00:00:00">
+    <meta property="article:modified_time" content="2021-05-21T00:00:00">
   
   
   
@@ -46,6 +46,8 @@
     
       <meta property="article:tag" content="hpa">
     
+      <meta property="article:tag" content="metrics-server">
+    
   
 
 
@@ -57,8 +59,8 @@
 
 
 
-  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg">
-  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/chinese-test-post/vintage-140.jpg">
+  <meta property="og:image" content="https://lurenjia528.github.io/img/hashiqi.png">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/hashiqi.png">
 
 
 
@@ -68,14 +70,14 @@
   <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
 
 
-    <title>k8s 监控采集信息</title>
+    <title>metrics-server引发的悲惨经历</title>
 
     <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://lurenjia528.github.io/2020/04/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF/">
+    <link rel="canonical" href="https://lurenjia528.github.io/2021/05/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -235,15 +237,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      k8s 监控采集信息
+      metrics-server引发的悲惨经历
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-04-10T00:00:00Z">
+      <time itemprop="datePublished" datetime="2021-05-21T00:00:00Z">
         
-  四月 10, 2020
+  五月 21, 2021
 
       </time>
     
@@ -268,8 +270,24 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>自定义指标：</p>
+              <p>自定义指标(与本文无关，重点是下面～)：</p>
 <p><a href="https://github.com/stefanprodan/k8s-prom-hpa/blob/master/README.md">参考</a></p>
+<p>背景：</p>
+<pre><code>开始公司使用的服务器是ft1500a和ft2000+,操作系统是kylin-sp2,后来有个项目，要使用虚拟机和kylin-v10操作系统，
+硬件方面都是arm架构，无非一个是基于ubuntu，一个是基于centos，二进制、镜像都没有啥差别，只是前期的一些安装包需要换，
+deb换成rpm，安装k8s就使用的sp2的安装包(之前做的，在多个现场也用的这个)，在虚拟机V10系统上装完之后，奇怪的事情发生了...
+</code></pre>
+<p>版本说明及报错信息：</p>
+<ul>
+<li>sp2的包，最开始k8s-1.14.2,metrics-server-0.3.2,后来升级到k8s1.18.10,metrics-server没动，还是0.3.2</li>
+<li>sp2的包，在1500a和2000+的sp2系统上仍然能正常部署，<code>kubectl top no</code> 也能用</li>
+<li>换到v10上，能正常安装，但是<code>kubectl top no</code>用不了(
+<code>ServiceUnavailable:the server is currently unable to handle the request(get nodes.metrics.k8s.io)</code>)，
+metrics-server报错(<code>x509:certificate signed by unknown authority</code>)，证书不可用,
+kube-apiserver报错(<code>v1beta1.metrics.k8s.io failed with:failing or missing response from https://10.10.113.25:443/apis/metrics.k8s.io/v1beta1:bad status from https://10.10.113.25:443/apis/metrics.k8s.io/v1beta1:401</code>
+)</li>
+</ul>
+<p>开始修复：</p>
 <p>metrics-server:</p>
 <p>k8s 1.18.0 安装 metrics-server 0.3.6 相关注意事项：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kube-apiserver.yaml 添加参数
@@ -291,7 +309,21 @@ metrics-server 更新镜像，修改参数
         imagePullPolicy: IfNotPresent
 
 注释所有挂载
-</code></pre></div>
+</code></pre></div><p>按上面命令修改之后，
+需要重启apiserver，此时，pod会创建失败(<code>networkplugin cni unauthorization...</code>),</p>
+<p>此时，每台机器执行<code>rm -rf /etc/cni/net.d/*</code>，
+清除cni配置，然后，<code>kubectl delete -f calico.yaml</code>,再<code>kubectl apply -f calico.yaml</code>
+重启calico，然后，kube-system命名空间下，哪个服务起不来，就delete 再apply,然后，kube-system命名空间下的服务正常了，</p>
+<p>接着，发现凡是注入istio-sidecar的pod都起不来(<code>error	citadelclient	Failed to create certificate: rpc error: code = Unauthenticated desc = request authenticate failure 2021-05-20T19:21:00.551646Z	error	cache	resource:default request:7aa8f9e4-627d-43f5-b28a-86b5801824d5 CSR hit non-retryable error (HTTP code: 0). Error: rpc error: code = Unauthenticated desc = request authenticate failure 2021-05-20T19:21:00.551683Z	error	cache	resource:default failed to rotate secret: rpc error: code = Unauthenticated desc = request authenticate failure 2021-05-20T19:26:00.409160Z	error	citadelclient	Failed to create certificate: rpc error: code = Unauthenticated desc = request authenticate failure 2021-05-20T19:26:00.409223Z	error	cache	resource:default request:153e49a7-c8e9-42a5-8957-d9db79ac4ac5 CSR hit non-retryable error (HTTP code: 0). Error: rpc error: code = Unauthenticated desc = request authenticate failure Authenticator ClientCertAuthenticator at index 0 got error: no verified chain is found. Authenticator KubeJWTAuthenticator at index 1 got error: failed to validate the JWT: the service account authentication returns an error: [invalid bearer token, square/go-jose: error in cryptographic primitive]. Authenticator ClientCertAuthenticator at index 2 got error: no verified chain is found. ROOTCA...</code>)，</p>
+<p>证书出问题了。。。</p>
+<p>因为改了apiserver的参数，怀疑有遗留的脏数据，找了几天，才想起来是这个default-token</p>
+<p>此时需要删除default-token,重启pod就可以了，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># kubectl get secret -n platform </span>
+NAME                         TYPE                                  DATA   AGE
+default-token-td4vp          kubernetes.io/service-account-token   <span style="color:#ae81ff">3</span>      12h
+</code></pre></div><p>删除注入sidecar的ns中的default-token-xxx,会自动重建这个secret,如果不放心，可以把所有ns的这个secret都删了
+然后，就可以愉快的重启(delete po 或者delete -f &amp; apply -f)pod了，</p>
+<p>唉，悲惨的适配</p>
               
             </div>
           </div>
@@ -307,6 +339,8 @@ metrics-server 更新镜像，修改参数
 
   <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/hpa/">hpa</a>
 
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/metrics-server/">metrics-server</a>
+
                   </div>
                 
               
@@ -318,7 +352,7 @@ metrics-server 更新镜像，修改参数
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/" data-tooltip="浏览器端口">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -326,7 +360,7 @@ metrics-server 更新镜像，修改参数
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/" data-tooltip="cobra与glog冲突">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/04/zookeeper%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B/" data-tooltip="zookeeper日志查看">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -386,7 +420,7 @@ metrics-server 更新镜像，修改参数
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%8F%A3/" data-tooltip="浏览器端口">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -394,7 +428,7 @@ metrics-server 更新镜像，修改参数
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2020/04/cobra%E4%B8%8Eglog%E5%86%B2%E7%AA%81/" data-tooltip="cobra与glog冲突">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/04/zookeeper%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B/" data-tooltip="zookeeper日志查看">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -522,9 +556,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/lurenjia528.github.io\/2020\/04\/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF\/';
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2021\/05\/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86\/';
           
-            this.page.identifier = '\/2020\/04\/k8s-%E7%9B%91%E6%8E%A7%E9%87%87%E9%9B%86%E4%BF%A1%E6%81%AF\/'
+            this.page.identifier = '\/2021\/05\/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86\/'
           
         };
         (function() {
