@@ -32,3 +32,38 @@ sp_close_session(SESS_ID)
 ```
 
 [参考](https://www.pianshen.com/article/84441029541/)
+
+# dm_svc.conf 
+## 如何使用dm集群主备模式
+
+dm服务配置文件(/etc/dm_svc.conf 路径文件名代码里写死的)
+
+简单配置如下：
+```bash
+ysf@ysf:~$ cat /etc/dm_svc.conf 
+TIME_ZONE=(480)
+LANGUAGE=(cn)
+DM=(192.168.17.187:5236,192.168.40.205:5236)
+login=(1)
+ysf@ysf:~$ 
+
+```
+
+springboot配置如下(原来的ip:port修改为服务名即可)
+```yaml
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  datasource:
+    url: jdbc:dm://DM/CLOUD
+    username: SYSDBA
+    password: SYSDBA
+    driver-class-name: dm.jdbc.driver.DmDriver
+  jpa:
+    database-platform: org.hibernate.dialect.DmDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+```
+
+详细配置参考 《系统管理员手册》2.1.1.4
