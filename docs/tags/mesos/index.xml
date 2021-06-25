@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mesos on lurenjia528</title>
+    <link>https://lurenjia528.github.io/tags/mesos/</link>
+    <description>Recent content in mesos on lurenjia528</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/tags/mesos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记一次线上故障排查</title>
+      <link>https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</guid>
+      <description>&lt;p&gt;严重的线上问题&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

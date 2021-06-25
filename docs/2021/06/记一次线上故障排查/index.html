@@ -8,35 +8,35 @@
 <meta name="generator" content="Hugo 0.80.0 with theme Tranquilpeak 0.4.8-BETA">
 <meta name="author" content="lurenjia528">
 <meta name="keywords" content="">
-<meta name="description" content="dm相关">
+<meta name="description" content="严重的线上问题">
 
 
-<meta property="og:description" content="dm相关">
+<meta property="og:description" content="严重的线上问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dm相关">
-<meta name="twitter:title" content="dm相关">
-<meta property="og:url" content="https://lurenjia528.github.io/2021/05/dm%E7%9B%B8%E5%85%B3/">
-<meta property="twitter:url" content="https://lurenjia528.github.io/2021/05/dm%E7%9B%B8%E5%85%B3/">
+<meta property="og:title" content="记一次线上故障排查">
+<meta name="twitter:title" content="记一次线上故障排查">
+<meta property="og:url" content="https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/">
+<meta property="twitter:url" content="https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/">
 <meta property="og:site_name" content="lurenjia528">
-<meta property="og:description" content="dm相关">
-<meta name="twitter:description" content="dm相关">
+<meta property="og:description" content="严重的线上问题">
+<meta name="twitter:description" content="严重的线上问题">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2021-05-26T00:00:00">
+    <meta property="article:published_time" content="2021-06-24T00:00:00">
   
   
-    <meta property="article:modified_time" content="2021-05-26T00:00:00">
+    <meta property="article:modified_time" content="2021-06-24T00:00:00">
   
-  
-  
-    
-      <meta property="article:section" content="dm">
-    
   
   
     
-      <meta property="article:tag" content="dm">
+      <meta property="article:section" content="mesos">
+    
+  
+  
+    
+      <meta property="article:tag" content="mesos">
     
   
 
@@ -49,12 +49,9 @@
 
 
 
-  <meta property="og:image" content="https://lurenjia528.github.io/img/dmlogo.jpeg">
-  <meta property="twitter:image" content="https://lurenjia528.github.io/img/dmlogo.jpeg">
+  <meta property="og:image" content="https://lurenjia528.github.io/img/mesos.jpeg">
+  <meta property="twitter:image" content="https://lurenjia528.github.io/img/mesos.jpeg">
 
-
-  <meta property="og:image" content="https://lurenjia528.github.io/img/dm.jpeg">
-  <meta property="twitter:image" content="https://lurenjia528.github.io/img/dm.jpeg">
 
 
 
@@ -63,14 +60,14 @@
   <meta property="twitter:image" content="https://lurenjia528.github.io/ll.jpeg">
 
 
-    <title>dm相关</title>
+    <title>记一次线上故障排查</title>
 
     <link rel="icon" href="https://lurenjia528.github.io/favicon.ico">
     
 
     
 
-    <link rel="canonical" href="https://lurenjia528.github.io/2021/05/dm%E7%9B%B8%E5%85%B3/">
+    <link rel="canonical" href="https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -219,24 +216,26 @@
 </nav>
 
       
-  <div class="post-header-cover
-              text-left
-              "
-       style="background-image:url('/img/dm.jpeg')"
-       data-behavior="4">
-    
-      <div class="post-header main-content-wrap text-left">
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      dm相关
+      记一次线上故障排查
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2021-05-26T00:00:00Z">
+      <time itemprop="datePublished" datetime="2021-06-24T00:00:00Z">
         
-  五月 26, 2021
+  六月 24, 2021
 
       </time>
     
@@ -245,61 +244,40 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://lurenjia528.github.io/categories/dm">dm</a>
+      <a class="category-link" href="https://lurenjia528.github.io/categories/mesos">mesos</a>
     
   
 
   </div>
 
 </div>
-    
-  </div>
-
-
-      <div id="main" data-behavior="4"
-        class="hasCover
-               hasCoverMetaIn
-               ">
-        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
-          
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>dm相关</p>
-<h1 id="dm锁表-如何解决">dm锁表 如何解决</h1>
-<p>查询事物视图,查到等待的事务id。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> v$trxwait;
-</code></pre></div><p>利用sessions视图，查到sess_id。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> sess_id <span style="color:#66d9ef">from</span> v$sessions <span style="color:#66d9ef">where</span> tex_id <span style="color:#66d9ef">in</span> (<span style="color:#66d9ef">select</span> id <span style="color:#66d9ef">from</span> v$trxwait);
-</code></pre></div><p>利用sp_close_session(sess_id);可以导致锁超时的语句。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sp_close_session(SESS_ID)
-</code></pre></div><p><a href="https://www.pianshen.com/article/84441029541/">参考</a></p>
-<h1 id="dm_svcconf">dm_svc.conf</h1>
-<h2 id="如何使用dm集群主备模式">如何使用dm集群主备模式</h2>
-<p>dm服务配置文件(/etc/dm_svc.conf 路径文件名代码里写死的)</p>
-<p>简单配置如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ysf@ysf:~$ cat /etc/dm_svc.conf 
-TIME_ZONE<span style="color:#f92672">=(</span>480<span style="color:#f92672">)</span>
-LANGUAGE<span style="color:#f92672">=(</span>cn<span style="color:#f92672">)</span>
-DM<span style="color:#f92672">=(</span>192.168.17.187:5236,192.168.40.205:5236<span style="color:#f92672">)</span>
-login<span style="color:#f92672">=(</span>1<span style="color:#f92672">)</span>
-ysf@ysf:~$ 
-
-</code></pre></div><p>springboot配置如下(原来的ip:port修改为服务名即可)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spring</span>:
-  <span style="color:#f92672">lifecycle</span>:
-    <span style="color:#f92672">timeout-per-shutdown-phase</span>: <span style="color:#ae81ff">30s</span>
-  <span style="color:#f92672">datasource</span>:
-    <span style="color:#f92672">url</span>: <span style="color:#ae81ff">jdbc:dm://DM/CLOUD</span>
-    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">SYSDBA</span>
-    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">SYSDBA</span>
-    <span style="color:#f92672">driver-class-name</span>: <span style="color:#ae81ff">dm.jdbc.driver.DmDriver</span>
-  <span style="color:#f92672">jpa</span>:
-    <span style="color:#f92672">database-platform</span>: <span style="color:#ae81ff">org.hibernate.dialect.DmDialect</span>
-    <span style="color:#f92672">show-sql</span>: <span style="color:#66d9ef">false</span>
-    <span style="color:#f92672">hibernate</span>:
-      <span style="color:#f92672">ddl-auto</span>: <span style="color:#ae81ff">update</span>
-</code></pre></div><p>详细配置参考 《系统管理员手册》2.1.1.4</p>
+              <p>严重的线上问题</p>
+<p>2021-06-23 晚上20：00开始，一个微信电话会议开始，jh的一个项目，
+mesos+marathon的架构，三控制，10计算(计算节点数量忘了)，
+kylin的操作系统(sp2,好像)，ft1500a的服务器，突然master1机器死机了，
+keepalived且切换到了master2，容器做了迁移，但是一切才刚开始。。。</p>
+<p>所有容器，页面访问都明显变慢20多秒，</p>
+<p>晚上8点开始电话会议，一直到11点，一直排查，没明显进展，apache2日志,nginx日志,php日志都看了
+，没什么头绪，11点多点，电话会议结束了。</p>
+<p>12点，现场电话打过来了，让去现场，部门领导，技术总监都去，无奈，只好打车去了。</p>
+<p>1小时后，到了现场，开始排查，一楼能访问页面，地下室才能连服务器，连接服务器还需要动态口令，还不让ssh。。。</p>
+<p>直接用容器ip访问健康检查接口，15s才回复，就一个nginx镜像，获取静态文件很快，ms级别，获取一个.php文件15s以上。</p>
+<p>之前电话会议的时候，我还让现场的人ping过域名，mysql.microservice.mesos.marathon也是通的，毫秒的</p>
+<p>mysql -h 容器ip 要10秒才能连接进去，反复查询，发现mysql有一个反向解析，配置/etc/hosts后，获取链接变快了，
+但是页面仅仅是快了5秒而已。问题依旧存在。。。</p>
+<p>2个小时又过去了。此时，一个同时被电话叫醒，去拍技术总监的家门了。。。</p>
+<p>就在此时，我在容器内ping mysql.microservice.mesos.marathon ping不通了，
+突然看了一下/etc/resolv.conf文件，竟然！！！配置了3个nameserver(3控),第一个nameserver就是master1,
+然而，master1死机了，注释掉地一个nameserver,果然，页面访问恢复了。。。</p>
+<p>立马告诉技术总监，不用来了，接着睡吧，解决了。。。</p>
+<p>原来是宿主机上/etc/resolv.conf文件是空的，容器里获取到了3个主控的ip，
+理论上，宿主机的/etc/resolv.conf应该配置虚拟ip的(多控)，单控的话就配置master1的ip，这样mesos-dns就可以解析</p>
+<p>有了解决方案之后，基本就没我什么事了，剩下写包奥，就交给他们了。</p>
+<p>又查了查/etc/resolv.conf，果然，默认5s超时，重试2次，5s的倍数的延时，就是访问了多次其他服务。。。</p>
+<p>坑啊。。。</p>
               
             </div>
           </div>
@@ -311,7 +289,7 @@ ysf@ysf:~$
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/dm/">dm</a>
+  <a class="tag tag--primary tag--small" href="https://lurenjia528.github.io/tags/mesos/">mesos</a>
 
                   </div>
                 
@@ -324,7 +302,7 @@ ysf@ysf:~$
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" data-tooltip="记一次线上故障排查">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -332,7 +310,7 @@ ysf@ysf:~$
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/05/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86/" data-tooltip="metrics-server引发的悲惨经历">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/05/dm%E7%9B%B8%E5%85%B3/" data-tooltip="dm相关">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -392,7 +370,7 @@ ysf@ysf:~$
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" data-tooltip="记一次线上故障排查">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -400,7 +378,7 @@ ysf@ysf:~$
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/05/metrics-server%E5%BC%95%E5%8F%91%E7%9A%84%E6%82%B2%E6%83%A8%E7%BB%8F%E5%8E%86/" data-tooltip="metrics-server引发的悲惨经历">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://lurenjia528.github.io/2021/05/dm%E7%9B%B8%E5%85%B3/" data-tooltip="dm相关">
               
                   <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -528,9 +506,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/lurenjia528.github.io\/2021\/05\/dm%E7%9B%B8%E5%85%B3\/';
+          this.page.url = 'https:\/\/lurenjia528.github.io\/2021\/06\/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5\/';
           
-            this.page.identifier = '\/2021\/05\/dm%E7%9B%B8%E5%85%B3\/'
+            this.page.identifier = '\/2021\/06\/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5\/'
           
         };
         (function() {
