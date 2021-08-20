@@ -6,7 +6,16 @@
     <description>Recent content on lurenjia528</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>k8s 端口使用情况</title>
+      <link>https://lurenjia528.github.io/2021/08/k8s-%E7%AB%AF%E5%8F%A3%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/2021/08/k8s-%E7%AB%AF%E5%8F%A3%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5/</guid>
+      <description>&lt;p&gt;k8s 开启防火墙时的端口问题&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>记一次线上故障排查</title>
       <link>https://lurenjia528.github.io/2021/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%BA%BF%E4%B8%8A%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</link>

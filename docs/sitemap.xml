@@ -4,12 +4,47 @@
   
   <url>
     <loc>https://lurenjia528.github.io/categories/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lurenjia528.github.io/categories/firewalld/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lurenjia528.github.io/categories/k8s/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lurenjia528.github.io/2021/08/k8s-%E7%AB%AF%E5%8F%A3%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://lurenjia528.github.io/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lurenjia528.github.io/post/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lurenjia528.github.io/tags/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lurenjia528.github.io/tags/ufw/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lurenjia528.github.io/categories/ufw/</loc>
+    <lastmod>2021-08-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -19,16 +54,6 @@
   
   <url>
     <loc>https://lurenjia528.github.io/categories/mesos/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lurenjia528.github.io/post/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lurenjia528.github.io/tags/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -59,11 +84,6 @@
   
   <url>
     <loc>https://lurenjia528.github.io/categories/hpa/</loc>
-    <lastmod>2021-05-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lurenjia528.github.io/categories/k8s/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url>
   

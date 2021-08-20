@@ -6,7 +6,34 @@
     <description>Recent content in Categories on lurenjia528</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lurenjia528.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>firewalld</title>
+      <link>https://lurenjia528.github.io/categories/firewalld/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/firewalld/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://lurenjia528.github.io/categories/k8s/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ufw</title>
+      <link>https://lurenjia528.github.io/categories/ufw/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lurenjia528.github.io/categories/ufw/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>mesos</title>
       <link>https://lurenjia528.github.io/categories/mesos/</link>
@@ -31,15 +58,6 @@
       <pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lurenjia528.github.io/categories/hpa/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>k8s</title>
-      <link>https://lurenjia528.github.io/categories/k8s/</link>
-      <pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lurenjia528.github.io/categories/k8s/</guid>
       <description></description>
     </item>
     
